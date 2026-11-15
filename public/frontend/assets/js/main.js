@@ -79,24 +79,26 @@ document.addEventListener('DOMContentLoaded', () => {
     let heroThumbs = null;
 
     if (heroThumbEl) {
+      const thumbCount = heroThumbEl.querySelectorAll('.swiper-wrapper > .swiper-slide').length;
       heroThumbs = new Swiper('#heroThumbSlider', {
         spaceBetween: 12,
-        slidesPerView: 3,
+        slidesPerView: Math.min(3, Math.max(1, thumbCount)),
         freeMode: true,
         watchSlidesProgress: true,
       });
     }
 
     if (heroSliderEl) {
+      const slideCount = heroSliderEl.querySelectorAll('.swiper-wrapper > .swiper-slide').length;
       heroSwiper = new Swiper('#heroSlider', {
         effect: 'fade',
         fadeEffect: { crossFade: true },
         speed: 900,
-        loop: true,
-        autoplay: {
+        loop: slideCount > 1,
+        autoplay: slideCount > 1 ? {
           delay: 5500,
           disableOnInteraction: false,
-        },
+        } : false,
         navigation: {
           nextEl: '.hero-next',
           prevEl: '.hero-prev',

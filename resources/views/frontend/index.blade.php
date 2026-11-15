@@ -7,107 +7,105 @@
   <section class="hero-section" id="hero">
     <div class="swiper hero-swiper" id="heroSlider">
       <div class="swiper-wrapper">
-        <!-- Slide 1 -->
-        <div class="swiper-slide hero-slide">
-          <div class="hero-bg" style="background-image: url('{{ asset('frontend/assets/images') }}/hero-cinema.jpg');"></div>
-          <div class="hero-overlay"></div>
-          <div class="container hero-content">
-            <div class="hero-badge">
-              <i class="fa-solid fa-star"></i>
-              <span>বাংলাদেশের সেরা কাস্টিং ও মিডিয়া পোর্টফোলিও প্ল্যাটফর্ম</span>
-            </div>
-            <h1 class="hero-title">
-              নাটক, সিনেমা ও বিজ্ঞাপনের
-              <span class="text-gold-gradient">সৃজনশীল মিডিয়া ও প্রোডাকশন হাউস</span>
-            </h1>
-            <p class="hero-desc">
-              গল্পের গভীরতা, ৪কে সিনেমাটোগ্রাফি এবং দেশের সেরা অভিনয়শিল্পীদের সমন্বয়ে আমরা তৈরি করি কালজয়ী ভিজ্যুয়াল অভিজ্ঞতা।
-            </p>
-            <div class="hero-cta-row">
-              <a href="#portfolio-section" class="btn-gold-pill btn-lg">
-                <i class="fa-solid fa-film"></i>
-                <span>পোর্টফোলিও দেখুন</span>
-              </a>
-              <button class="btn-outline-gold btn-lg js-play-reel" data-title="Mind Blowing Media ২০২৬ মেগা শো-রিল" data-category="অফিসিয়াল শো-রিল • ২:৪৫ মিনিট" data-poster="{{ asset('frontend/assets/images') }}/hero-cinema.jpg" data-video="https://www.youtube.com/watch?v=aqz-KE-bpKQ" type="button">
-                <i class="fa-solid fa-circle-play"></i>
-                <span>শো-রিল চালু করুন</span>
-              </button>
-            </div>
-            <div class="hero-meta-strip">
-              <div class="meta-chip"><i class="fa-solid fa-video"></i> 4K HDR Cinema</div>
-              <div class="meta-chip"><i class="fa-solid fa-users"></i> ১৮৫০+ ট্যালেন্ট রোস্টার</div>
-              <div class="meta-chip"><i class="fa-solid fa-award"></i> ১৮+ জাতীয় ও আন্তর্জাতিক অ্যাওয়ার্ড</div>
-            </div>
-          </div>
-        </div>
+        @forelse($heroSliders as $index => $slider)
+          <div class="swiper-slide hero-slide">
+            <div class="hero-bg" style="background-image: url('{{ $slider->image ? asset($slider->image) : asset('frontend/assets/images/hero-cinema.jpg') }}');"></div>
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+              @if(!empty($slider->badge))
+                <div class="hero-badge">
+                  <i class="fa-solid fa-star"></i>
+                  <span>{{ $slider->badge }}</span>
+                </div>
+              @endif
 
-        <!-- Slide 2 -->
-        <div class="swiper-slide hero-slide">
-          <div class="hero-bg" style="background-image: url('{{ asset('frontend/assets/images') }}/hero-studio.jpg');"></div>
-          <div class="hero-overlay"></div>
-          <div class="container hero-content">
-            <div class="hero-badge">
-              <i class="fa-solid fa-bolt"></i>
-              <span>হাই-ভোল্টেজ টিভিসি ও ব্র্যান্ড স্টোরিটেলিং</span>
-            </div>
-            <h1 class="hero-title">
-              ব্র্যান্ডের গল্পকে দিন
-              <span class="text-gold-gradient">বিশ্বমানের ভিজ্যুয়াল ও কাস্টিং</span>
-            </h1>
-            <p class="hero-desc">
-              কনসেপ্ট ডেভেলপমেন্ট থেকে শুরু করে লাইটিং, সেট ডিজাইন ও কালার গ্রেডিং—প্রতিটি ফ্রেমে পেশাদারিত্বের ছাপ।
-            </p>
-            <div class="hero-cta-row">
-              <a href="#craft-section" class="btn-gold-pill btn-lg">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                <span>প্রোডাকশন সার্ভিস</span>
-              </a>
-              <button class="btn-outline-gold btn-lg js-play-reel" data-title="গ্লোবাল ব্র্যান্ড টিভিসি কমপাইলেশন" data-category="বিজ্ঞাপন • ১:৫০ মিনিট" data-poster="{{ asset('frontend/assets/images') }}/hero-studio.jpg" data-video="https://www.youtube.com/watch?v=eRsGyueVLvQ" type="button">
-                <i class="fa-solid fa-circle-play"></i>
-                <span>টিভিসি রিল দেখুন</span>
-              </button>
-            </div>
-            <div class="hero-meta-strip">
-              <div class="meta-chip"><i class="fa-solid fa-bullhorn"></i> ৬৫+ টপ ব্র্যান্ড</div>
-              <div class="meta-chip"><i class="fa-solid fa-camera-retro"></i> ARRI &amp; RED সেটআপ</div>
-              <div class="meta-chip"><i class="fa-solid fa-palette"></i> DaVinci কালার ল্যাব</div>
-            </div>
-          </div>
-        </div>
+              <h1 class="hero-title">
+                {!! $slider->title !!}
+              </h1>
 
-        <!-- Slide 3 -->
-        <div class="swiper-slide hero-slide">
-          <div class="hero-bg" style="background-image: url('{{ asset('frontend/assets/images') }}/portfolio-film.jpg');"></div>
-          <div class="hero-overlay"></div>
-          <div class="container hero-content">
-            <div class="hero-badge">
-              <i class="fa-solid fa-masks-theater"></i>
-              <span>ওটিটি অরিজিনাল ও মেগা ফিল্ম প্রজেক্ট</span>
-            </div>
-            <h1 class="hero-title">
-              নতুন প্রজন্মের নির্মাতা ও
-              <span class="text-gold-gradient">তারকা শিল্পীদের মিলনমেলা</span>
-            </h1>
-            <p class="hero-desc">
-              ওটিটি প্ল্যাটফর্ম, থিয়েটার ফিল্ম এবং মিউজিক ভিডিওর জন্য নিখুঁত কাস্টিং ও এন্ড-টু-এন্ড প্রোডাকশন সল্যুশন।
-            </p>
-            <div class="hero-cta-row">
-              <a href="#talent-directory" class="btn-gold-pill btn-lg">
-                <i class="fa-solid fa-users-viewfinder"></i>
-                <span>ট্যালেন্ট ডিরেক্টরি দেখুন</span>
-              </a>
-              <button class="btn-outline-gold btn-lg js-play-reel" data-title="নিশিগন্ধা — ওটিটি থ্রিলার টিজার" data-category="ওয়েব ফিল্ম • ১:৩০ মিনিট" data-poster="{{ asset('frontend/assets/images') }}/portfolio-film.jpg" data-video="https://www.youtube.com/watch?v=HomAZcKm3fk" type="button">
-                <i class="fa-solid fa-circle-play"></i>
-                <span>টিজার দেখুন</span>
-              </button>
-            </div>
-            <div class="hero-meta-strip">
-              <div class="meta-chip"><i class="fa-solid fa-tv"></i> ওটিটি ও সিনেমা</div>
-              <div class="meta-chip"><i class="fa-solid fa-microphone-lines"></i> ডলবি সাউন্ড ডিজাইন</div>
-              <div class="meta-chip"><i class="fa-solid fa-star"></i> ফ্রেশ ও সিনিয়র ট্যালেন্ট</div>
+              @if(!empty($slider->subtitle))
+                <p class="hero-desc">
+                  {{ $slider->subtitle }}
+                </p>
+              @endif
+
+              <div class="hero-cta-row">
+                @if(!empty($slider->btn_text_1))
+                  <a href="{{ $slider->btn_url_1 ?: '#portfolio-section' }}" class="btn-gold-pill btn-lg">
+                    <i class="fa-solid fa-film"></i>
+                    <span>{{ $slider->btn_text_1 }}</span>
+                  </a>
+                @endif
+
+                @if(!empty($slider->btn_text_2))
+                  @php
+                    $isReel = empty($slider->btn_url_2) || $slider->btn_url_2 === '#openShowreelBtn' || str_contains($slider->btn_url_2, 'youtube.com') || str_contains($slider->btn_url_2, 'youtu.be') || str_contains($slider->btn_url_2, '.mp4');
+                    $videoUrl = (str_contains($slider->btn_url_2 ?? '', 'youtube.com') || str_contains($slider->btn_url_2 ?? '', 'youtu.be') || str_contains($slider->btn_url_2 ?? '', '.mp4'))
+                      ? $slider->btn_url_2
+                      : ($settings['showreel_url'] ?? 'https://www.youtube.com/watch?v=aqz-KE-bpKQ');
+                  @endphp
+
+                  @if($isReel)
+                    <button class="btn-outline-gold btn-lg js-play-reel" 
+                            data-title="{{ strip_tags($slider->title) }}" 
+                            data-category="অফিসিয়াল শো-রিল" 
+                            data-poster="{{ $slider->image ? asset($slider->image) : asset('frontend/assets/images/hero-cinema.jpg') }}" 
+                            data-video="{{ $videoUrl }}" 
+                            type="button">
+                      <i class="fa-solid fa-circle-play"></i>
+                      <span>{{ $slider->btn_text_2 }}</span>
+                    </button>
+                  @else
+                    <a href="{{ $slider->btn_url_2 }}" class="btn-outline-gold btn-lg">
+                      <i class="fa-solid fa-circle-play"></i>
+                      <span>{{ $slider->btn_text_2 }}</span>
+                    </a>
+                  @endif
+                @endif
+              </div>
+
+              <div class="hero-meta-strip">
+                <div class="meta-chip"><i class="fa-solid fa-video"></i> 4K HDR Cinema</div>
+                <div class="meta-chip"><i class="fa-solid fa-users"></i> {{ $settings['stat_artists'] ?? '১৮৫০+' }} ট্যালেন্ট রোস্টার</div>
+                <div class="meta-chip"><i class="fa-solid fa-award"></i> {{ $settings['stat_projects'] ?? '৫০০+' }} সম্পন্ন প্রজেক্ট</div>
+              </div>
             </div>
           </div>
-        </div>
+        @empty
+          <!-- Fallback slide if no dynamic slider created yet -->
+          <div class="swiper-slide hero-slide">
+            <div class="hero-bg" style="background-image: url('{{ asset('frontend/assets/images/hero-cinema.jpg') }}');"></div>
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+              <div class="hero-badge">
+                <i class="fa-solid fa-star"></i>
+                <span>বাংলাদেশের সেরা কাস্টিং ও মিডিয়া পোর্টফোলিও প্ল্যাটফর্ম</span>
+              </div>
+              <h1 class="hero-title">
+                নাটক, সিনেমা ও বিজ্ঞাপনের
+                <span class="text-gold-gradient">সৃজনশীল মিডিয়া ও প্রোডাকশন হাউস</span>
+              </h1>
+              <p class="hero-desc">
+                গল্পের গভীরতা, ৪কে সিনেমাটোগ্রাফি এবং দেশের সেরা অভিনয়শিল্পীদের সমন্বয়ে আমরা তৈরি করি কালজয়ী ভিজ্যুয়াল অভিজ্ঞতা।
+              </p>
+              <div class="hero-cta-row">
+                <a href="#portfolio-section" class="btn-gold-pill btn-lg">
+                  <i class="fa-solid fa-film"></i>
+                  <span>পোর্টফোলিও দেখুন</span>
+                </a>
+                <button class="btn-outline-gold btn-lg js-play-reel" data-title="Mind Blowing Media ২০২৬ মেগা শো-রিল" data-category="অফিসিয়াল শো-রিল • ২:৪৫ মিনিট" data-poster="{{ asset('frontend/assets/images/hero-cinema.jpg') }}" data-video="{{ $settings['showreel_url'] ?? 'https://www.youtube.com/watch?v=aqz-KE-bpKQ' }}" type="button">
+                  <i class="fa-solid fa-circle-play"></i>
+                  <span>শো-রিল চালু করুন</span>
+                </button>
+              </div>
+              <div class="hero-meta-strip">
+                <div class="meta-chip"><i class="fa-solid fa-video"></i> 4K HDR Cinema</div>
+                <div class="meta-chip"><i class="fa-solid fa-users"></i> {{ $settings['stat_artists'] ?? '১৮৫০+' }} ট্যালেন্ট রোস্টার</div>
+                <div class="meta-chip"><i class="fa-solid fa-award"></i> {{ $settings['stat_projects'] ?? '১৮+' }} অ্যাওয়ার্ড ও স্বীকৃতি</div>
+              </div>
+            </div>
+          </div>
+        @endforelse
       </div>
 
       <!-- Hero Controls & Synced Thumbnail Strip -->
@@ -124,27 +122,36 @@
 
           <div class="swiper hero-thumbs-swiper" id="heroThumbSlider">
             <div class="swiper-wrapper">
-              <div class="swiper-slide thumb-card">
-                <img src="{{ asset('frontend/assets/images') }}/hero-cinema.jpg" alt="সিনেমা ও নাটক শো-রিল" />
-                <div class="thumb-info">
-                  <span class="thumb-num">০১</span>
-                  <span class="thumb-label">সিনেমা ও প্রোডাকশন</span>
+              @php
+                $bnDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+                $toBn = function($num) use ($bnDigits) {
+                    $str = (string)$num;
+                    $res = '';
+                    for ($i = 0; $i < strlen($str); $i++) {
+                        $char = $str[$i];
+                        $res .= isset($bnDigits[$char]) ? $bnDigits[$char] : $char;
+                    }
+                    return strlen($res) === 1 ? '০' . $res : $res;
+                };
+              @endphp
+
+              @forelse($heroSliders as $index => $slider)
+                <div class="swiper-slide thumb-card">
+                  <img src="{{ $slider->image ? asset($slider->image) : asset('frontend/assets/images/hero-cinema.jpg') }}" alt="{{ strip_tags($slider->title) }}" />
+                  <div class="thumb-info">
+                    <span class="thumb-num">{{ $toBn($index + 1) }}</span>
+                    <span class="thumb-label">{{ Str::limit(strip_tags($slider->title), 22) }}</span>
+                  </div>
                 </div>
-              </div>
-              <div class="swiper-slide thumb-card">
-                <img src="{{ asset('frontend/assets/images') }}/hero-studio.jpg" alt="টিভিসি ও ব্র্যান্ড স্টুডিও" />
-                <div class="thumb-info">
-                  <span class="thumb-num">০২</span>
-                  <span class="thumb-label">টিভিসি ও ব্র্যান্ড ক্যাম্পেইন</span>
+              @empty
+                <div class="swiper-slide thumb-card">
+                  <img src="{{ asset('frontend/assets/images/hero-cinema.jpg') }}" alt="সিনেমা ও নাটক শো-রিল" />
+                  <div class="thumb-info">
+                    <span class="thumb-num">০১</span>
+                    <span class="thumb-label">সিনেমা ও প্রোডাকশন</span>
+                  </div>
                 </div>
-              </div>
-              <div class="swiper-slide thumb-card">
-                <img src="{{ asset('frontend/assets/images') }}/portfolio-film.jpg" alt="ওটিটি ও থ্রিলার" />
-                <div class="thumb-info">
-                  <span class="thumb-num">০৩</span>
-                  <span class="thumb-label">ওটিটি ওয়েব অরিজিনাল</span>
-                </div>
-              </div>
+              @endforelse
             </div>
           </div>
         </div>
