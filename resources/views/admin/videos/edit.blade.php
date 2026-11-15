@@ -84,14 +84,19 @@
         </div>
 
         <div class="col-12">
-          <label class="form-label">Change Video Thumbnail (Drag &amp; Drop or Browse)</label>
+          <label class="form-label d-flex align-items-center justify-content-between">
+            <span>Change Video Thumbnail (Drag &amp; Drop or Browse)</span>
+            <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2 py-1">
+              <i class="fa-solid fa-ruler-combined me-1"></i> Dimension: 800 &times; 450 px (16:9)
+            </span>
+          </label>
           <div class="file-dropzone">
             <input type="file" name="thumbnail" accept="image/*">
             <div class="dropzone-icon">
               <i class="fa-solid fa-cloud-arrow-up"></i>
             </div>
             <div class="dropzone-title">Click to upload or drag &amp; drop new thumbnail</div>
-            <div class="dropzone-subtitle">Supported formats: JPG, PNG, WebP (Converts to WebP)</div>
+            <div class="dropzone-subtitle">Recommended size: <strong>800 &times; 450 px</strong> &bull; Auto-optimized to WebP</div>
             <div class="preview-wrapper d-none"></div>
           </div>
 

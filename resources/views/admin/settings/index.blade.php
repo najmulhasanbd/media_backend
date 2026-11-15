@@ -86,14 +86,19 @@
 
           <!-- Logo Upload Dropzone -->
           <div class="col-md-6">
-            <label class="form-label">Main Brand Logo (Upload or Drag &amp; Drop)</label>
+            <label class="form-label d-flex align-items-center justify-content-between">
+              <span>Main Brand Logo</span>
+              <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2 py-1">
+                <i class="fa-solid fa-ruler-combined me-1"></i> 600 &times; 200 px
+              </span>
+            </label>
             <div class="file-dropzone">
               <input type="file" name="site_logo" accept="image/*">
               <div class="dropzone-icon">
                 <i class="fa-solid fa-cloud-arrow-up"></i>
               </div>
               <div class="dropzone-title">Upload Official Brand Logo</div>
-              <div class="dropzone-subtitle">Recommended transparent PNG/WebP (Max 5MB)</div>
+              <div class="dropzone-subtitle">Recommended: <strong>600 &times; 200 px</strong> (Transparent PNG/WebP)</div>
               <div class="preview-wrapper d-none"></div>
             </div>
             @if(!empty($settings['site_logo']))
@@ -111,14 +116,19 @@
 
           <!-- Favicon Upload Dropzone -->
           <div class="col-md-6">
-            <label class="form-label">Site Favicon (Upload or Drag &amp; Drop)</label>
+            <label class="form-label d-flex align-items-center justify-content-between">
+              <span>Site Favicon</span>
+              <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2 py-1">
+                <i class="fa-solid fa-ruler-combined me-1"></i> 128 &times; 128 px (1:1)
+              </span>
+            </label>
             <div class="file-dropzone">
               <input type="file" name="site_favicon" accept="image/*">
               <div class="dropzone-icon">
                 <i class="fa-solid fa-shield-cat"></i>
               </div>
               <div class="dropzone-title">Upload Browser Tab Favicon</div>
-              <div class="dropzone-subtitle">Square 128x128 PNG or ICO format</div>
+              <div class="dropzone-subtitle">Recommended: <strong>128 &times; 128 px</strong> (PNG/ICO)</div>
               <div class="preview-wrapper d-none"></div>
             </div>
             @if(!empty($settings['site_favicon']))
@@ -181,14 +191,19 @@
 
           <!-- Avatar Upload Dropzone -->
           <div class="col-12">
-            <label class="form-label">Change Administrator Avatar Photo (Drag &amp; Drop or Browse)</label>
+            <label class="form-label d-flex align-items-center justify-content-between">
+              <span>Change Administrator Avatar Photo</span>
+              <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2 py-1">
+                <i class="fa-solid fa-ruler-combined me-1"></i> Dimension: 400 &times; 400 px (1:1)
+              </span>
+            </label>
             <div class="file-dropzone">
               <input type="file" name="avatar" accept="image/*">
               <div class="dropzone-icon">
                 <i class="fa-solid fa-camera"></i>
               </div>
               <div class="dropzone-title">Upload new profile photo</div>
-              <div class="dropzone-subtitle">Square headshot (Converts automatically to WebP)</div>
+              <div class="dropzone-subtitle">Recommended size: <strong>400 &times; 400 px</strong> (Square) &bull; Auto-optimized to WebP</div>
               <div class="preview-wrapper d-none"></div>
             </div>
 

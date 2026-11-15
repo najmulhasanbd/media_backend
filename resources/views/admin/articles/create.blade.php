@@ -65,27 +65,37 @@
         </div>
 
         <div class="col-md-6">
-          <label class="form-label">Author Avatar Photo (Drag &amp; Drop or Browse)</label>
+          <label class="form-label d-flex align-items-center justify-content-between">
+            <span>Author Avatar Photo</span>
+            <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2 py-1">
+              <i class="fa-solid fa-ruler-combined me-1"></i> 300 &times; 300 px (1:1)
+            </span>
+          </label>
           <div class="file-dropzone">
             <input type="file" name="author_image" accept="image/*">
             <div class="dropzone-icon">
               <i class="fa-solid fa-cloud-arrow-up"></i>
             </div>
             <div class="dropzone-title">Upload author profile photo</div>
-            <div class="dropzone-subtitle">Square headshot (Converts to WebP)</div>
+            <div class="dropzone-subtitle">Recommended: <strong>300 &times; 300 px</strong> (Square) &bull; WebP</div>
             <div class="preview-wrapper d-none"></div>
           </div>
         </div>
 
         <div class="col-md-6">
-          <label class="form-label">Article Feature Cover Image (Drag &amp; Drop or Browse)</label>
+          <label class="form-label d-flex align-items-center justify-content-between">
+            <span>Article Feature Cover Image</span>
+            <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2 py-1">
+              <i class="fa-solid fa-ruler-combined me-1"></i> 900 &times; 500 px
+            </span>
+          </label>
           <div class="file-dropzone">
             <input type="file" name="image" accept="image/*">
             <div class="dropzone-icon">
               <i class="fa-solid fa-cloud-arrow-up"></i>
             </div>
             <div class="dropzone-title">Upload article cover picture</div>
-            <div class="dropzone-subtitle">Landscape aspect ratio (Converts to WebP)</div>
+            <div class="dropzone-subtitle">Recommended: <strong>900 &times; 500 px</strong> (Landscape) &bull; WebP</div>
             <div class="preview-wrapper d-none"></div>
           </div>
         </div>

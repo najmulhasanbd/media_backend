@@ -60,14 +60,19 @@
         </div>
 
         <div class="col-md-6">
-          <label class="form-label">Change Reviewer Headshot Photo (Drag &amp; Drop or Browse)</label>
+          <label class="form-label d-flex align-items-center justify-content-between">
+            <span>Change Reviewer Headshot Photo</span>
+            <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2 py-1">
+              <i class="fa-solid fa-ruler-combined me-1"></i> 300 &times; 300 px (1:1)
+            </span>
+          </label>
           <div class="file-dropzone">
             <input type="file" name="photo" accept="image/*">
             <div class="dropzone-icon">
               <i class="fa-solid fa-cloud-arrow-up"></i>
             </div>
             <div class="dropzone-title">Drop new photo or click to upload</div>
-            <div class="dropzone-subtitle">Leave empty to keep current photo (Converts to WebP)</div>
+            <div class="dropzone-subtitle">Recommended size: <strong>300 &times; 300 px</strong> &bull; Auto-optimized to WebP</div>
             <div class="preview-wrapper d-none"></div>
           </div>
           @if($review->photo)

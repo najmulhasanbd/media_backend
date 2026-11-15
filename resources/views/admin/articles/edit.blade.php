@@ -66,14 +66,19 @@
         </div>
 
         <div class="col-md-6">
-          <label class="form-label">Change Author Avatar (Drag &amp; Drop or Browse)</label>
+          <label class="form-label d-flex align-items-center justify-content-between">
+            <span>Change Author Avatar</span>
+            <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2 py-1">
+              <i class="fa-solid fa-ruler-combined me-1"></i> 300 &times; 300 px (1:1)
+            </span>
+          </label>
           <div class="file-dropzone">
             <input type="file" name="author_image" accept="image/*">
             <div class="dropzone-icon">
               <i class="fa-solid fa-cloud-arrow-up"></i>
             </div>
             <div class="dropzone-title">Click to upload new author headshot</div>
-            <div class="dropzone-subtitle">Square aspect ratio (Converts to WebP)</div>
+            <div class="dropzone-subtitle">Recommended: <strong>300 &times; 300 px</strong> (Square) &bull; WebP</div>
             <div class="preview-wrapper d-none"></div>
           </div>
           @if($article->author_image)
@@ -85,14 +90,19 @@
         </div>
 
         <div class="col-md-6">
-          <label class="form-label">Change Feature Cover Image (Drag &amp; Drop or Browse)</label>
+          <label class="form-label d-flex align-items-center justify-content-between">
+            <span>Change Feature Cover Image</span>
+            <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2 py-1">
+              <i class="fa-solid fa-ruler-combined me-1"></i> 900 &times; 500 px
+            </span>
+          </label>
           <div class="file-dropzone">
             <input type="file" name="image" accept="image/*">
             <div class="dropzone-icon">
               <i class="fa-solid fa-cloud-arrow-up"></i>
             </div>
             <div class="dropzone-title">Click to upload new story cover image</div>
-            <div class="dropzone-subtitle">Landscape aspect ratio (Converts to WebP)</div>
+            <div class="dropzone-subtitle">Recommended: <strong>900 &times; 500 px</strong> (Landscape) &bull; WebP</div>
             <div class="preview-wrapper d-none"></div>
           </div>
           @if($article->image)

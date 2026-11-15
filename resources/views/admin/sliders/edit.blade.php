@@ -51,14 +51,19 @@
         </div>
 
         <div class="col-12">
-          <label class="form-label">Change Backdrop Cover Image (Drag &amp; Drop or Browse)</label>
+          <label class="form-label d-flex align-items-center justify-content-between">
+            <span>Change Backdrop Cover Image (Drag &amp; Drop or Browse)</span>
+            <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2 py-1">
+              <i class="fa-solid fa-ruler-combined me-1"></i> Dimension: 1920 &times; 1080 px (16:9)
+            </span>
+          </label>
           <div class="file-dropzone">
             <input type="file" name="image" accept="image/*">
             <div class="dropzone-icon">
               <i class="fa-solid fa-cloud-arrow-up"></i>
             </div>
             <div class="dropzone-title">Click to upload or drag &amp; drop new backdrop image here</div>
-            <div class="dropzone-subtitle">Supported formats: JPG, PNG, WebP (Automatically converted to WebP)</div>
+            <div class="dropzone-subtitle">Recommended size: <strong>1920 &times; 1080 px</strong> &bull; Auto-optimized to WebP</div>
             <div class="preview-wrapper d-none"></div>
           </div>
 

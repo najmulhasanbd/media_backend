@@ -126,14 +126,19 @@
         </div>
 
         <div class="col-12">
-          <label class="form-label">Update Headshot Photo (Drag &amp; Drop or Browse)</label>
+          <label class="form-label d-flex align-items-center justify-content-between">
+            <span>Update Headshot Photo (Drag &amp; Drop or Browse)</span>
+            <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle px-2 py-1">
+              <i class="fa-solid fa-ruler-combined me-1"></i> Dimension: 600 &times; 800 px (3:4 Portrait)
+            </span>
+          </label>
           <div class="file-dropzone">
             <input type="file" name="photo" accept="image/*">
             <div class="dropzone-icon">
               <i class="fa-solid fa-cloud-arrow-up"></i>
             </div>
             <div class="dropzone-title">Click to upload or drag &amp; drop new talent headshot here</div>
-            <div class="dropzone-subtitle">Supported formats: JPG, PNG, WebP (Automatically converted to WebP)</div>
+            <div class="dropzone-subtitle">Recommended size: <strong>600 &times; 800 px</strong> &bull; Auto-optimized to WebP</div>
             <div class="preview-wrapper d-none"></div>
           </div>
 
