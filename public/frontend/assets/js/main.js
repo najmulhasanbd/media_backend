@@ -512,7 +512,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const tmHeight = document.getElementById('tmHeight');
     const tmExperience = document.getElementById('tmExperience');
     const tmBio = document.getElementById('tmBio');
-    const tmDriveLink = document.getElementById('tmDriveLink');
+    const tmWhatsappBtn = document.getElementById('tmWhatsappBtn');
 
     if (tmPhoto) tmPhoto.src = profile.photo;
     if (tmCategory) tmCategory.textContent = profile.category;
@@ -522,7 +522,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (tmHeight) tmHeight.textContent = profile.height || 'উল্লেখ নেই';
     if (tmExperience) tmExperience.textContent = profile.expLabel;
     if (tmBio) tmBio.textContent = profile.bio;
-    if (tmDriveLink) tmDriveLink.href = profile.driveLink || '#registration-section';
+
+    if (tmWhatsappBtn) {
+      const adminPhone = tmWhatsappBtn.dataset.adminPhone || '8801700000123';
+      const talentName = profile.name || '';
+      const talentCat = profile.category || 'শিল্পী';
+      const message = encodeURIComponent(`হ্যালো Mind Blowing Media, আমি শিল্পী ${talentName} (${talentCat})-কে কাস্টিং/বুকিং সংক্রান্ত বিষয়ে কথা বলতে আগ্রহী।`);
+      tmWhatsappBtn.href = `https://wa.me/${adminPhone}?text=${message}`;
+    }
 
     openModal(talentDetailModal);
   }
@@ -647,20 +654,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   renderDirectory();
-
-  const tmWatchAuditionBtn = document.getElementById('tmWatchAuditionBtn');
-  if (tmWatchAuditionBtn) {
-    tmWatchAuditionBtn.addEventListener('click', () => {
-      if (!activeModalProfile) return;
-      closeModal(talentDetailModal);
-      openReelPlayer({
-        title: `${activeModalProfile.name} — অডিশন শো-রিল`,
-        category: `${activeModalProfile.category} • ${activeModalProfile.expLabel}`,
-        poster: activeModalProfile.photo,
-        videoUrl: activeModalProfile.videoLink,
-      });
-    });
-  }
 
   /* -------------------- 7. New Artist Registration Form -------------------- */
   const artistRegistrationForm = document.getElementById('artistRegistrationForm');

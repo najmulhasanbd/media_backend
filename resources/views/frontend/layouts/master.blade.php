@@ -91,13 +91,15 @@
           <p class="tm-bio" id="tmBio">অভিজ্ঞতার বিস্তারিত বিবরণ এখানে দেখা যাবে।</p>
 
           <div class="tm-actions">
-            <button class="btn-gold-pill" id="tmWatchAuditionBtn" type="button">
-              <i class="fa-solid fa-circle-play"></i>
-              <span>অডিশন রিল দেখুন</span>
-            </button>
-            <a class="btn-outline-gold" id="tmDriveLink" href="#registration-section" target="_blank" rel="noopener">
-              <i class="fa-brands fa-google-drive"></i>
-              <span>পোর্টফোলিও লিংক</span>
+            @php
+              $adminPhone = preg_replace('/[^0-9]/', '', \App\Models\Setting::get('site_phone', '8801700000123'));
+              if (str_starts_with($adminPhone, '01')) {
+                  $adminPhone = '88' . $adminPhone;
+              }
+            @endphp
+            <a class="btn-whatsapp-pill w-full text-center" id="tmWhatsappBtn" data-admin-phone="{{ $adminPhone }}" href="https://wa.me/{{ $adminPhone }}" target="_blank" rel="noopener">
+              <i class="fa-brands fa-whatsapp fs-5"></i>
+              <span>হোয়াটসঅ্যাপে যোগাযোগ করুন</span>
             </a>
           </div>
         </div>
