@@ -291,7 +291,7 @@
         </h5>
 
         <div class="row g-4 mb-4">
-          <div class="col-md-6">
+          <div class="col-md-4">
             <label class="form-label">Official Hotline / Phone</label>
             <div class="input-group-modern">
               <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
@@ -299,7 +299,15 @@
             </div>
           </div>
 
-          <div class="col-md-6">
+          <div class="col-md-4">
+            <label class="form-label">Official WhatsApp Number (Admin)</label>
+            <div class="input-group-modern">
+              <span class="input-group-text text-success"><i class="fa-brands fa-whatsapp fs-5"></i></span>
+              <input type="text" name="site_whatsapp" class="form-control fw-bold" placeholder="e.g. 017XXXXXXXX" value="{{ $settings['site_whatsapp'] ?? ($settings['site_phone'] ?? '+880 1700-000123') }}">
+            </div>
+          </div>
+
+          <div class="col-md-4">
             <label class="form-label">Official Casting Email</label>
             <div class="input-group-modern">
               <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>

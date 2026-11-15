@@ -1,7 +1,3 @@
-/* ==========================================================================
-   Mind Blowing MEDIA — Casting & Media House
-   Interactive Multi-Sliders (Swiper) + Odometer Live Countdown + Modals
-   ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
   /* -------------------- 1. Navbar Scroll & Mobile Menu -------------------- */
@@ -524,7 +520,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (tmBio) tmBio.textContent = profile.bio;
 
     if (tmWhatsappBtn) {
-      const adminPhone = tmWhatsappBtn.dataset.adminPhone || '8801700000123';
+      let adminPhone = (tmWhatsappBtn.dataset.adminPhone || '8801700000123').replace(/[^0-9]/g, '');
+      if (adminPhone.startsWith('01')) {
+        adminPhone = '88' + adminPhone;
+      }
       const talentName = profile.name || '';
       const talentCat = profile.category || 'শিল্পী';
       const message = encodeURIComponent(`হ্যালো Mind Blowing Media, আমি শিল্পী ${talentName} (${talentCat})-কে কাস্টিং/বুকিং সংক্রান্ত বিষয়ে কথা বলতে আগ্রহী।`);
@@ -691,7 +690,7 @@ document.addEventListener('DOMContentLoaded', () => {
           let data = {};
           try {
             data = await res.json();
-          } catch (err) {}
+          } catch (err) { }
 
           if (!res.ok) {
             let errorMsg = data.message || 'একটি সমস্যা হয়েছে, অনুগ্রহ করে আবার চেষ্টা করুন।';

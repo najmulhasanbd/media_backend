@@ -92,14 +92,15 @@
 
           <div class="tm-actions">
             @php
-              $adminPhone = preg_replace('/[^0-9]/', '', \App\Models\Setting::get('site_phone', '8801700000123'));
+              $rawPhone = \App\Models\Setting::get('site_whatsapp') ?: \App\Models\Setting::get('site_phone', '01700000123');
+              $adminPhone = preg_replace('/[^0-9]/', '', $rawPhone);
               if (str_starts_with($adminPhone, '01')) {
                   $adminPhone = '88' . $adminPhone;
               }
             @endphp
-            <a class="btn-whatsapp-pill w-full text-center" id="tmWhatsappBtn" data-admin-phone="{{ $adminPhone }}" href="https://wa.me/{{ $adminPhone }}" target="_blank" rel="noopener">
+            <a class="btn-whatsapp-pill w-full text-center" id="tmWhatsappBtn" data-admin-phone="{{ $adminPhone }}" href="https://wa.me/{{ $adminPhone }}" target="_blank" rel="noopener" title="অ্যাডমিনের সাথে সরাসরি হোয়াটসঅ্যাপে যোগাযোগ করুন">
               <i class="fa-brands fa-whatsapp fs-5"></i>
-              <span>হোয়াটসঅ্যাপে যোগাযোগ করুন</span>
+              <span>অ্যাডমিনের হোয়াটসঅ্যাপে যোগাযোগ করুন</span>
             </a>
           </div>
         </div>
