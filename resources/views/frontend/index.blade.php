@@ -300,7 +300,7 @@
                   {{ $call->status === 'urgent' ? 'জরুরি কাস্টিং' : 'ওপেন অডিশন' }}
                 </span>
                 @if(!empty($call->deadline))
-                  <span class="casting-deadline">ডেডলাইন: {{ \Carbon\Carbon::parse($call->deadline)->format('d M') }}</span>
+                  <span class="casting-deadline">ডেডলাইন: {{ $call->formatted_deadline }}</span>
                 @endif
               </div>
               <h3>{{ $call->title }}</h3>
