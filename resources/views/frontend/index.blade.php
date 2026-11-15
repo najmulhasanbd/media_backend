@@ -268,92 +268,7 @@
     </div>
   </section>
 
-  <!-- ==================== PRODUCTION CRAFT & SERVICES (SLIDER #3 — 3D COVERFLOW) ==================== -->
-  <section class="craft-section section-pad" id="craft-section">
-    <div class="container">
-      <div class="section-header-row">
-        <div>
-          <span class="eyebrow"><i class="fa-solid fa-sliders"></i> আমাদের দক্ষতা ও বিটিএস</span>
-          <h2 class="section-title">ক্যামেরার পেছনের <span class="text-gold-gradient">ক্রাফট ও প্রোডাকশন সার্ভিস</span></h2>
-          <p class="section-sub">স্ক্রিপ্ট থেকে বড় পর্দা—প্রতিটি ধাপে সর্বাধুনিক প্রযুক্তি ও অভিজ্ঞ ক্রিয়েটিভ ডিরেক্টরদের তত্ত্বাবধান</p>
-        </div>
-        <div class="slider-arrows-top">
-          <button class="slider-circle-btn craft-prev" type="button" aria-label="Previous Craft Slide">
-            <i class="fa-solid fa-arrow-left"></i>
-          </button>
-          <button class="slider-circle-btn craft-next" type="button" aria-label="Next Craft Slide">
-            <i class="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
 
-      <div class="swiper craft-swiper" id="btsSlider">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide craft-slide">
-            <div class="craft-img-wrap">
-              <img src="{{ asset('frontend/assets/images') }}/hero-cinema.jpg" alt="সিনেমাটোগ্রাফি ও ৪কে শুটিং" />
-              <span class="craft-step">০১</span>
-            </div>
-            <div class="craft-content">
-              <h3>সিনেমাটোগ্রাফি ও ৪কে/৮কে শুটিং</h3>
-              <p>RED V-Raptor, ARRI Alexa Mini ও অ্যানামরফিক প্রাইম লেন্সের মাধ্যমে প্রিমিয়াম ভিজ্যুয়াল ক্যাপচার।</p>
-            </div>
-          </div>
-
-          <div class="swiper-slide craft-slide">
-            <div class="craft-img-wrap">
-              <img src="{{ asset('frontend/assets/images') }}/portfolio-casting.jpg" alt="ট্যালেন্ট ও মডেল কাস্টিং" />
-              <span class="craft-step">০২</span>
-            </div>
-            <div class="craft-content">
-              <h3>ট্যালেন্ট ও মডেল কাস্টিং ডিরেকশন</h3>
-              <p>নাটক, সিনেমা ও ব্র্যান্ডের চরিত্র অনুযায়ী ১৮৫০+ অডিশন-ভেরিফাইড শিল্পী থেকে নিখুঁত নির্বাচন।</p>
-            </div>
-          </div>
-
-          <div class="swiper-slide craft-slide">
-            <div class="craft-img-wrap">
-              <img src="{{ asset('frontend/assets/images') }}/hero-studio.jpg" alt="স্টুডিও লাইটিং ও সেট ডিজাইন" />
-              <span class="craft-step">০৩</span>
-            </div>
-            <div class="craft-content">
-              <h3>প্রফেশনাল স্টুডিও ও সেট ডিজাইন</h3>
-              <p>নিজস্ব সাইক্লোরামা স্টুডিও, ডলি ট্র্যাক, জিব আর্ম ও ডিএমএক্স মুভিং লাইটিং সেটআপ।</p>
-            </div>
-          </div>
-
-          <div class="swiper-slide craft-slide">
-            <div class="craft-img-wrap">
-              <img src="{{ asset('frontend/assets/images') }}/portfolio-film.jpg" alt="কালার গ্রেডিং ও ভিএফএক্স" />
-              <span class="craft-step">০৪</span>
-            </div>
-            <div class="craft-content">
-              <h3>DaVinci কালার গ্রেডিং ও ভিএফএক্স</h3>
-              <p>আন্তর্জাতিক সিনেমা স্ট্যান্ডার্ড ডিআই কালার গ্রেডিং, কম্পোজিটিং ও হাই-এন্ড মোশন গ্রাফিক্স।</p>
-            </div>
-          </div>
-
-          <div class="swiper-slide craft-slide">
-            <div class="craft-img-wrap">
-              <img src="{{ asset('frontend/assets/images') }}/portfolio-music.jpg" alt="অডিও ডিজাইন ও মাস্টারিং" />
-              <span class="craft-step">০৫</span>
-            </div>
-            <div class="craft-content">
-              <h3>সাউন্ড ডিজাইন ও ডলবি মিক্সিং</h3>
-              <p>অরিজিনাল ব্যাকগ্রাউন্ড স্কোর, ফলি সাউন্ড, ডাবিং ও সিনেমা হল স্ট্যান্ডার্ড অডিও মাস্টারিং।</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-view-all">
-        <a href="gallery.html" class="btn-outline-gold">
-          <i class="fa-regular fa-images"></i>
-          <span>সম্পূর্ণ শুটিং ও ফটো গ্যালারি দেখুন</span>
-        </a>
-      </div>
-    </div>
-  </section>
 
   @if($castingCalls->isNotEmpty())
   <!-- ==================== OPEN CASTING CALLS SLIDER ==================== -->
@@ -521,10 +436,10 @@
               </div>
             </div>
             <div class="reg-highlight-item">
-              <span class="reg-icon"><i class="fa-solid fa-bolt"></i></span>
+              <span class="reg-icon"><i class="fa-solid fa-user-check"></i></span>
               <div>
-                <h4>তাৎক্ষণিক ডিরেক্টরি প্রিভিউ</h4>
-                <p>ফর্ম সাবমিট করার সাথে সাথেই উপরের ট্যালেন্ট ডিরেক্টরিতে আপনার প্রোফাইল যুক্ত হয়ে যাবে (লাইভ ডেমো)।</p>
+                <h4>সহজ ও দ্রুত প্রোফাইল সংরক্ষণ</h4>
+                <p>আপনার পাঠানো পোর্টফোলিও আমাদের অভ্যন্তরীণ কাস্টিং রোস্টারে সুরক্ষিতভাবে জমা হবে।</p>
               </div>
             </div>
           </div>
@@ -654,75 +569,7 @@
   </section>
   @endif
 
-  <!-- ==================== PORTAL EXPLORER HUB ==================== -->
-  <section class="section-pad" id="portal-hub">
-    <div class="container">
-      <div class="section-header-center">
-        <span class="eyebrow"><i class="fa-solid fa-compass"></i> Mind Blowing Media সম্পূর্ণ পোর্টাল</span>
-        <h2 class="section-title">এক ক্লিকে ঘুরে দেখুন <span class="text-gold-gradient">আমাদের সব বিভাগ</span></h2>
-        <p class="section-sub">অভিনয়শিল্পী ও বিদেশি আর্টিস্ট প্রোফাইল, শুটিং হাউজ ক্যাটালগ, জরুরি নোটিশ ও ডায়েরিসহ প্রোডাকশনের পূর্ণাঙ্গ জগত।</p>
-      </div>
-
-      <div class="portal-hub-grid">
-        <a href="{{ route('profiles') }}" class="portal-hub-card">
-          <span class="portal-hub-icon"><i class="fa-solid fa-users"></i></span>
-          <h3>অভিনয়শিল্পী ও মডেল প্রোফাইল</h3>
-          <p>ভেরিফাইড অভিনেতা, অভিনেত্রী, ফ্যাশন মডেল ও চরিত্রাভিনেতাদের সম্পূর্ণ পোর্টফোলিও।</p>
-          <span class="portal-hub-link">প্রোফাইল দেখুন <i class="fa-solid fa-arrow-right"></i></span>
-        </a>
-
-        <a href="{{ route('international.artists') }}" class="portal-hub-card">
-          <span class="portal-hub-icon"><i class="fa-solid fa-globe"></i></span>
-          <h3>বিদেশি অভিনয়শিল্পী</h3>
-          <p>যৌথ প্রযোজনা ও আন্তর্জাতিক ব্র্যান্ড শুটের জন্য ওয়ার্ক-পারমিট রেডি বিদেশি শিল্পীরা।</p>
-          <span class="portal-hub-link">গ্লোবাল রোস্টার <i class="fa-solid fa-arrow-right"></i></span>
-        </a>
-
-        <a href="{{ route('shooting.houses') }}" class="portal-hub-card">
-          <span class="portal-hub-icon"><i class="fa-solid fa-building"></i></span>
-          <h3>শুটিং হাউজ</h3>
-          <p>সাউন্ডস্টেজ, ডুপ্লেক্স ভিলা, হেরিটেজ বাড়ি ও কর্পোরেট সেট বুকিং ক্যাটালগ।</p>
-          <span class="portal-hub-link">লোকেশন খুঁজুন <i class="fa-solid fa-arrow-right"></i></span>
-        </a>
-
-        <a href="{{ route('notices') }}" class="portal-hub-card">
-          <span class="portal-hub-icon"><i class="fa-solid fa-bullhorn"></i></span>
-          <h3>নোটিশ বোর্ড</h3>
-          <p>চলমান অডিশন কল, নতুন ওটিটি প্রজেক্ট সার্কুলার ও অফিসিয়াল নীতিমালা।</p>
-          <span class="portal-hub-link">নোটিশ দেখুন <i class="fa-solid fa-arrow-right"></i></span>
-        </a>
-
-        <a href="{{ route('directors.diary') }}" class="portal-hub-card">
-          <span class="portal-hub-icon"><i class="fa-solid fa-film"></i></span>
-          <h3>পরিচালক ও প্রযোজক ডায়েরি</h3>
-          <p>অন-সেট শুটিং লগ, বাজেট প্ল্যানিং ও নির্মাতাদের সৃজনশীল অভিজ্ঞতার জার্নাল।</p>
-          <span class="portal-hub-link">ডায়েরি পড়ুন <i class="fa-solid fa-arrow-right"></i></span>
-        </a>
-
-        <a href="{{ route('artists.diary') }}" class="portal-hub-card">
-          <span class="portal-hub-icon"><i class="fa-solid fa-book-open"></i></span>
-          <h3>অভিনয়শিল্পী ডাইরি</h3>
-          <p>প্রথম অডিশন, চরিত্র প্রস্তুতি ও রাতের শুটিং নিয়ে শিল্পীদের ব্যক্তিগত গল্প।</p>
-          <span class="portal-hub-link">গল্প পড়ুন <i class="fa-solid fa-arrow-right"></i></span>
-        </a>
-
-        <a href="{{ route('opinions') }}" class="portal-hub-card">
-          <span class="portal-hub-icon"><i class="fa-solid fa-pen-nib"></i></span>
-          <h3>আমাদের মতামত</h3>
-          <p>স্বচ্ছ কাস্টিং সংস্কৃতি, ওটিটি অভিনয় ও নতুন শিল্পীদের গাইডলাইন নিয়ে সম্পাদকীয়।</p>
-          <span class="portal-hub-link">মতামত পড়ুন <i class="fa-solid fa-arrow-right"></i></span>
-        </a>
-
-        <a href="gallery.html" class="portal-hub-card">
-          <span class="portal-hub-icon"><i class="fa-solid fa-images"></i></span>
-          <h3>ফটো ও ভিডিও আর্কাইভ</h3>
-          <p>অটো-স্ক্রল শুটিং স্টিল গ্যালারি, শো-রিল ভিডিও ও ক্লায়েন্ট রিভিউ আর্কাইভ।</p>
-          <span class="portal-hub-link">গ্যালারি দেখুন <i class="fa-solid fa-arrow-right"></i></span>
-        </a>
-      </div>
-    </div>
-  </section>
-
+  @if($faqs->isNotEmpty())
   <!-- ==================== FAQ ACCORDION SECTION ==================== -->
   <section class="faq-section section-pad" id="faq-section">
     <div class="container">
@@ -733,58 +580,21 @@
       </div>
 
       <div class="faq-list" id="faqList">
-        <div class="faq-item active">
-          <button class="faq-trigger" type="button" aria-expanded="true">
-            <span>নতুন শিল্পী হিসেবে প্রোফাইল জমা দিতে কি কোনো রেজিস্ট্রেশন ফি লাগে?</span>
-            <i class="fa-solid fa-plus"></i>
-          </button>
-          <div class="faq-panel">
-            <p>না, Mind Blowing Media-এ নতুন শিল্পীদের প্রোফাইল জমা দেওয়া ও কাস্টিং অডিশনে অংশগ্রহণ করা সম্পূর্ণ বিনামূল্যে। আমরা কোনো ধরনের অগ্রিম রেজিস্ট্রেশন ফি গ্রহণ করি না।</p>
+        @foreach($faqs as $index => $faq)
+          <div class="faq-item {{ $index === 0 ? 'active' : '' }}">
+            <button class="faq-trigger" type="button" aria-expanded="{{ $index === 0 ? 'true' : 'false' }}">
+              <span>{{ $faq->question }}</span>
+              <i class="fa-solid fa-plus"></i>
+            </button>
+            <div class="faq-panel">
+              <p>{{ $faq->answer }}</p>
+            </div>
           </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-trigger" type="button" aria-expanded="false">
-            <span>আগে অভিনয়ের কোনো অভিজ্ঞতা না থাকলে কি আবেদন করা যাবে?</span>
-            <i class="fa-solid fa-plus"></i>
-          </button>
-          <div class="faq-panel">
-            <p>অবশ্যই! আমাদের অনেক টিভিসি, ক্যাম্পাস ড্রামা ও নতুন ওটিটি প্রজেক্টে ফ্রেশ মুখ খোঁজা হয়। আপনি মোবাইল ক্যামেরায় তোলা ১ মিনিটের একটি ইন্ট্রো বা অভিনয়ের সেলফ-টেপ ভিডিও লিংক দিয়েই আবেদন করতে পারবেন।</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-trigger" type="button" aria-expanded="false">
-            <span>ফর্ম সাবমিট করার পর কীভাবে ও কতদিনের মধ্যে যোগাযোগ করা হয়?</span>
-            <i class="fa-solid fa-plus"></i>
-          </button>
-          <div class="faq-panel">
-            <p>আমাদের কাস্টিং টিম প্রতিটি প্রোফাইল যাচাই করে ডেটাবেজে সংরক্ষণ করে। চলমান কোনো চরিত্রের সাথে আপনার প্রোফাইল মিলে গেলে ৩-৭ কার্যদিবসের মধ্যে আপনার দেওয়া হোয়াটসঅ্যাপ নম্বরে অডিশন কলব্যাক পাঠানো হয়।</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-trigger" type="button" aria-expanded="false">
-            <span>ব্র্যান্ড টিভিসি, মিউজিক ভিডিও বা কর্পোরেট প্রোডাকশন বুকিং কীভাবে করবো?</span>
-            <i class="fa-solid fa-plus"></i>
-          </button>
-          <div class="faq-panel">
-            <p>উপরের “প্রোফাইল জমা দিন” বাটনে ক্লিক করে অথবা স্টুডিওর ফোন/ইমেইলে প্রজেক্টের সংক্ষিপ্ত বিবরণ দিলে ২৪ ঘণ্টার মধ্যে আমাদের প্রোডাকশন ডিরেক্টর বাজেট ও শুটিং শিডিউলসহ যোগাযোগ করবেন।</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-trigger" type="button" aria-expanded="false">
-            <span>Google Drive ছবি ও YouTube শো-রিল লিংক কীভাবে তৈরি করবো?</span>
-            <i class="fa-solid fa-plus"></i>
-          </button>
-          <div class="faq-panel">
-            <p>আপনার ৩-৫টি স্পষ্ট ক্লোজ-আপ ও ফুল-লেন্থ ছবি Google Drive ফোল্ডারে আপলোড করে “Anyone with the link” ভিউ পারমিশন দিন এবং ১-২ মিনিটের অভিনয়ের ভিডিও YouTube-এ Unlisted/Public হিসেবে আপলোড করে লিংকটি ফর্মে দিন।</p>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </section>
+  @endif
 
   <!-- ==================== CTA BANNER ==================== -->
   <section class="cta-section section-pad">
@@ -800,7 +610,7 @@
             <i class="fa-solid fa-circle-plus"></i>
             <span>প্রোফাইল / প্রজেক্ট জমা দিন</span>
           </a>
-          <a href="#talent-directory" class="btn-outline-gold btn-lg">
+          <a href="{{ route('profiles') }}" class="btn-outline-gold btn-lg">
             <i class="fa-solid fa-users"></i>
             <span>ট্যালেন্ট ডিরেক্টরি</span>
           </a>

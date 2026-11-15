@@ -19,7 +19,6 @@
         <div class="nav-dropdown-menu">
           <a href="{{ route('profiles') }}" class="nav-dropdown-item"><i class="fa-solid fa-users"></i> অভিনয়শিল্পী ও মডেল প্রোফাইল</a>
           <a href="{{ route('international.artists') }}" class="nav-dropdown-item"><i class="fa-solid fa-globe"></i> বিদেশি অভিনয়শিল্পী</a>
-          <a href="{{ route('home') }}#talent-directory" class="nav-dropdown-item"><i class="fa-solid fa-magnifying-glass"></i> লাইভ ট্যালেন্ট ডিরেক্টরি</a>
         </div>
       </div>
 
@@ -28,7 +27,6 @@
           <span>মিডিয়া ও স্টুডিও</span><i class="fa-solid fa-chevron-down"></i>
         </button>
         <div class="nav-dropdown-menu">
-          <a href="{{ route('home') }}#gallery" class="nav-dropdown-item"><i class="fa-solid fa-images"></i> ফটো গ্যালারি</a>
           <a href="{{ route('videos') }}" class="nav-dropdown-item"><i class="fa-solid fa-clapperboard"></i> ভিডিও পোর্টফোলিও</a>
           <a href="{{ route('shooting.houses') }}" class="nav-dropdown-item"><i class="fa-solid fa-building"></i> শুটিং হাউজ</a>
         </div>

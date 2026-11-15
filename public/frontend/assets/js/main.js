@@ -393,7 +393,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const stream = canvas.captureStream(30);
     reelVideo.srcObject = stream;
     reelVideo.muted = true;
-    reelVideo.play().catch(() => {});
+    reelVideo.play().catch(() => { });
   }
 
   function stopReelPlayer() {
@@ -676,8 +676,8 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>জমা হচ্ছে...</span>';
       }
 
-      const csrfToken = document.querySelector('meta[name="csrf-token"]') 
-        ? document.querySelector('meta[name="csrf-token"]').getAttribute('content') 
+      const csrfToken = document.querySelector('meta[name="csrf-token"]')
+        ? document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         : '';
 
       fetch('/apply', {
@@ -688,32 +688,32 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         body: formData
       })
-      .then(res => {
-        if (!res.ok) throw new Error('Network error');
-        return res.json();
-      })
-      .then(data => {
-        form.reset();
-        if (typeof Swal !== 'undefined') {
-          Swal.fire({
-            icon: 'success',
-            title: 'ধন্যবাদ!',
-            text: data.message || 'আপনার আবেদনটি সফলভাবে জমা হয়েছে।',
-            confirmButtonColor: '#d4af37'
-          });
-        } else {
-          alert(data.message || 'আপনার আবেদনটি সফলভাবে জমা হয়েছে।');
-        }
-      })
-      .catch(err => {
-        form.submit();
-      })
-      .finally(() => {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalText;
-        }
-      });
+        .then(res => {
+          if (!res.ok) throw new Error('Network error');
+          return res.json();
+        })
+        .then(data => {
+          form.reset();
+          if (typeof Swal !== 'undefined') {
+            Swal.fire({
+              icon: 'success',
+              title: 'ধন্যবাদ!',
+              text: data.message || 'আপনার আবেদনটি সফলভাবে জমা হয়েছে।',
+              confirmButtonColor: '#d4af37'
+            });
+          } else {
+            alert(data.message || 'আপনার আবেদনটি সফলভাবে জমা হয়েছে।');
+          }
+        })
+        .catch(err => {
+          form.submit();
+        })
+        .finally(() => {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+          }
+        });
     });
   }
 

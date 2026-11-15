@@ -7,6 +7,7 @@ use App\Models\Application;
 use App\Models\Article;
 use App\Models\CastingCall;
 use App\Models\Category;
+use App\Models\Faq;
 use App\Models\HeroSlider;
 use App\Models\Notice;
 use App\Models\Review;
@@ -37,6 +38,7 @@ class FrontendController extends Controller
         $articles = Article::where('status', true)->latest()->take(6)->get();
         $notices = Notice::where('status', true)->orderBy('is_pinned', 'desc')->latest()->take(5)->get();
         $reviews = Review::where('status', true)->where('is_featured', true)->latest()->take(6)->get();
+        $faqs = Faq::where('status', true)->orderBy('order', 'asc')->get();
         $settings = Setting::pluck('value', 'key');
 
         return view('frontend.index', compact(
@@ -49,6 +51,7 @@ class FrontendController extends Controller
             'articles',
             'notices',
             'reviews',
+            'faqs',
             'settings'
         ));
     }

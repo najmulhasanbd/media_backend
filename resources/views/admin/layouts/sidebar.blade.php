@@ -130,6 +130,19 @@
         </ul>
       </li>
 
+      <!-- FAQs -->
+      <li class="nav-item has-dropdown {{ request()->routeIs('admin.faqs.*') ? 'active open' : '' }}">
+        <div class="dropdown-header">
+          <i class="fa-solid fa-circle-question"></i>
+          <span>FAQs</span>
+          <i class="fa-solid fa-chevron-right arrow"></i>
+        </div>
+        <ul class="submenu">
+          <li><a href="{{ route('admin.faqs.index') }}" class="{{ request()->routeIs('admin.faqs.index') ? 'text-primary fw-bold' : '' }}">All FAQs</a></li>
+          <li><a href="{{ route('admin.faqs.create') }}" class="{{ request()->routeIs('admin.faqs.create') ? 'text-primary fw-bold' : '' }}">Add New FAQ</a></li>
+        </ul>
+      </li>
+
       <!-- Audition Applications -->
       <li class="nav-item {{ request()->routeIs('admin.applications.*') ? 'active' : '' }}">
         <a href="{{ route('admin.applications.index') }}" class="d-flex align-items-center justify-content-between">

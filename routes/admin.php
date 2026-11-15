@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ApplicationController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CastingCallController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HeroSliderController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\ReviewController;
@@ -51,6 +52,10 @@ Route::middleware(['auth'])->group(function () {
     // Reviews
     Route::post('reviews/reorder', [ReviewController::class, 'reorder'])->name('reviews.reorder');
     Route::resource('reviews', ReviewController::class);
+
+    // FAQs (Homepage Accordion)
+    Route::post('faqs/reorder', [FaqController::class, 'reorder'])->name('faqs.reorder');
+    Route::resource('faqs', FaqController::class);
 
     // Audition Applications
     Route::get('applications', [ApplicationController::class, 'index'])->name('applications.index');
