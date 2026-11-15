@@ -44,7 +44,7 @@
             <th>Age &amp; Height</th>
             <th>Submission Date</th>
             <th>Status</th>
-            <th class="text-end pe-4">Actions</th>
+            <th class="col-actions text-end pe-4">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -94,17 +94,19 @@
                   <span class="badge bg-danger px-3 py-1 rounded-pill">Rejected</span>
                 @endif
               </td>
-              <td class="text-end pe-4">
-                <a href="{{ route('admin.applications.show', $app) }}" class="action-btn-circle text-primary me-1" title="View Candidate Profile">
-                  <i class="fa-solid fa-eye small"></i>
-                </a>
-                <form action="{{ route('admin.applications.destroy', $app) }}" method="POST" class="d-inline">
-                  @csrf
-                  @method('DELETE')
-                  <button type="button" class="action-btn-circle text-danger confirm-delete" title="Delete Submission">
-                    <i class="fa-solid fa-trash small"></i>
-                  </button>
-                </form>
+              <td class="col-actions text-end pe-4">
+                <div class="table-actions-group">
+                  <a href="{{ route('admin.applications.show', $app) }}" class="action-btn-circle text-primary" title="View Candidate Profile">
+                    <i class="fa-solid fa-eye small"></i>
+                  </a>
+                  <form action="{{ route('admin.applications.destroy', $app) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" class="action-btn-circle text-danger confirm-delete" title="Delete Submission">
+                      <i class="fa-solid fa-trash small"></i>
+                    </button>
+                  </form>
+                </div>
               </td>
             </tr>
           @empty

@@ -446,55 +446,69 @@
         <form class="registration-form-card" id="artistRegistrationForm" action="{{ route('apply') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="reg-form-grid">
-            <div class="form-row">
-              <label for="regName">পূর্ণ নাম <span class="req">*</span></label>
-              <input type="text" id="regName" name="name" placeholder="আপনার নাম লিখুন" required />
-            </div>
-
-            <div class="form-row">
-              <label for="regPhone">ফোন / হোয়াটসঅ্যাপ নম্বর <span class="req">*</span></label>
-              <input type="tel" id="regPhone" name="phone" placeholder="০1XXXXXXXXX" required />
-              <small class="field-hint">আমরা মূলত হোয়াটসঅ্যাপের মাধ্যমে যোগাযোগের জন্য মেসেজ পাঠাবো।</small>
-            </div>
-
-            <div class="form-row">
-              <label for="regCategory">ক্যাটাগরি <span class="req">*</span></label>
-              <select id="regCategory" name="category" required>
-                <option value="">নির্বাচন করুন</option>
-                @foreach($categories as $cat)
-                  <option value="{{ $cat->name }}" {{ old('category') === $cat->name ? 'selected' : '' }}>{{ $cat->name }}</option>
-                @endforeach
-              </select>
+            <div class="form-row-2">
+              <div class="form-row">
+                <label for="regName">পূর্ণ নাম <span class="req">*</span></label>
+                <input type="text" id="regName" name="name" placeholder="আপনার নাম লিখুন" required />
+              </div>
+              <div class="form-row">
+                <label for="regPhone">ফোন / হোয়াটসঅ্যাপ নম্বর <span class="req">*</span></label>
+                <input type="tel" id="regPhone" name="phone" placeholder="০১XXXXXXXXX" required />
+              </div>
             </div>
 
             <div class="form-row-2">
               <div class="form-row">
-                <label for="regAge">বয়স <span class="req">*</span></label>
-                <input type="number" id="regAge" name="age" min="5" max="85" placeholder="বয়স" required />
+                <label for="regEmail">ইমেইল ঠিকানা</label>
+                <input type="email" id="regEmail" name="email" placeholder="example@gmail.com" />
               </div>
               <div class="form-row">
-                <label for="regHeight">উচ্চতা (ফুট/ইঞ্চি)</label>
-                <input type="text" id="regHeight" name="height" placeholder="যেমন: 5' 8&quot;" />
+                <label for="regGender">লিঙ্গ (Gender) <span class="req">*</span></label>
+                <select id="regGender" name="gender" required>
+                  <option value="">নির্বাচন করুন</option>
+                  <option value="পুরুষ (Male)">পুরুষ (Male)</option>
+                  <option value="নারী (Female)">নারী (Female)</option>
+                  <option value="অন্যান্য (Other)">অন্যান্য (Other)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-row">
+                <label for="regCategory">ক্যাটাগরি <span class="req">*</span></label>
+                <select id="regCategory" name="category" required>
+                  <option value="">নির্বাচন করুন</option>
+                  @foreach($categories as $cat)
+                    <option value="{{ $cat->name }}" {{ old('category') === $cat->name ? 'selected' : '' }}>{{ $cat->name }}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="form-row-2">
+                <div class="form-row">
+                  <label for="regAge">বয়স <span class="req">*</span></label>
+                  <input type="number" id="regAge" name="age" min="5" max="85" placeholder="যেমন: ২৫" required />
+                </div>
+                <div class="form-row">
+                  <label for="regHeight">উচ্চতা</label>
+                  <input type="text" id="regHeight" name="height" placeholder="যেমন: 5' 8&quot;" />
+                </div>
               </div>
             </div>
 
             <div class="form-row">
-              <label for="regDriveLink">ছবি / পোর্টফোলিও লিংক (Google Drive)</label>
-              <input type="url" id="regDriveLink" name="portfolio_url" placeholder="https://drive.google.com/..." />
+              <label for="regDriveLink">পোর্টফোলিও / ড্রাইভ / অডিশন ভিডিও লিংক</label>
+              <input type="url" id="regDriveLink" name="portfolio_url" placeholder="https://drive.google.com/... বা YouTube ভিডিও লিংক" />
             </div>
 
             <div class="form-row">
-              <label for="regVideoLink">অডিশন ভিডিও / শো-রিল লিংক (YouTube/Facebook)</label>
-              <input type="url" id="regVideoLink" placeholder="https://youtube.com/watch?v=..." />
-            </div>
-
-            <div class="form-row">
-              <label for="regPhoto">প্রোফাইল ছবি (WebP তে কনভার্ট হবে)</label>
+              <label for="regPhoto">প্রোফাইল ছবি</label>
               <input type="file" id="regPhoto" name="photo" accept="image/*" />
+              <small class="field-hint">আপনার স্পষ্ট ছবি আপলোড করুন (সর্বোচ্চ ৫ এমবি)।</small>
             </div>
+
             <div class="form-row">
-              <label for="regExperience">পূর্বের কাজের অভিজ্ঞতা (যদি থাকে)</label>
-              <textarea id="regExperience" name="bio" rows="3" placeholder="নাটক, শর্ট ফিল্ম বা বিজ্ঞাপনে কাজের সংক্ষিপ্ত বিবরণ লিখুন..."></textarea>
+              <label for="regExperience">পূর্বের কাজের অভিজ্ঞতা ও বিবরণ (যদি থাকে)</label>
+              <textarea id="regExperience" name="bio" rows="3" placeholder="নাটক, সিনেমা, বিজ্ঞাপন বা শর্ট ফিল্মে কাজের সংক্ষিপ্ত বিবরণ লিখুন..."></textarea>
             </div>
           </div>
 

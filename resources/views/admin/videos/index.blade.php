@@ -34,7 +34,7 @@
             <th>Duration</th>
             <th>Featured</th>
             <th>Status</th>
-            <th class="text-end pe-4">Actions</th>
+            <th class="col-actions text-end pe-4">Actions</th>
           </tr>
         </thead>
         <tbody id="sortableVideosBody">
@@ -87,17 +87,19 @@
                   <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-1">Inactive</span>
                 @endif
               </td>
-              <td class="text-end pe-4">
-                <a href="{{ route('admin.videos.edit', $video) }}" class="action-btn-circle text-primary me-1" title="Edit Video">
-                  <i class="fa-solid fa-pen small"></i>
-                </a>
-                <form action="{{ route('admin.videos.destroy', $video) }}" method="POST" class="d-inline">
-                  @csrf
-                  @method('DELETE')
-                  <button type="button" class="action-btn-circle text-danger confirm-delete" title="Delete Video">
-                    <i class="fa-solid fa-trash small"></i>
-                  </button>
-                </form>
+              <td class="col-actions text-end pe-4">
+                <div class="table-actions-group">
+                  <a href="{{ route('admin.videos.edit', $video) }}" class="action-btn-circle text-primary" title="Edit Video">
+                    <i class="fa-solid fa-pen small"></i>
+                  </a>
+                  <form action="{{ route('admin.videos.destroy', $video) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" class="action-btn-circle text-danger confirm-delete" title="Delete Video">
+                      <i class="fa-solid fa-trash small"></i>
+                    </button>
+                  </form>
+                </div>
               </td>
             </tr>
           @empty

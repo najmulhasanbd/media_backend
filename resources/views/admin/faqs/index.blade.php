@@ -31,7 +31,7 @@
             <th>Question</th>
             <th>Answer</th>
             <th>Status</th>
-            <th class="text-end pe-4">Actions</th>
+            <th class="col-actions text-end pe-4">Actions</th>
           </tr>
         </thead>
         <tbody id="sortableFaqsBody">
@@ -53,16 +53,16 @@
                   <span class="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill px-3 py-1">Inactive</span>
                 @endif
               </td>
-              <td class="text-end pe-4">
-                <div class="d-inline-flex align-items-center gap-2">
-                  <a href="{{ route('admin.faqs.edit', $faq) }}" class="btn btn-action-edit" title="Edit FAQ">
-                    <i class="fa-solid fa-pen-to-square"></i>
+              <td class="col-actions text-end pe-4">
+                <div class="table-actions-group">
+                  <a href="{{ route('admin.faqs.edit', $faq) }}" class="action-btn-circle text-primary" title="Edit FAQ">
+                    <i class="fa-solid fa-pen small"></i>
                   </a>
-                  <form action="{{ route('admin.faqs.destroy', $faq) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this FAQ?');">
+                  <form action="{{ route('admin.faqs.destroy', $faq) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-action-delete" title="Delete FAQ">
-                      <i class="fa-solid fa-trash-can"></i>
+                    <button type="button" class="action-btn-circle text-danger confirm-delete" title="Delete FAQ">
+                      <i class="fa-solid fa-trash small"></i>
                     </button>
                   </form>
                 </div>

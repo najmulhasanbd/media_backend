@@ -668,12 +668,18 @@ document.addEventListener('DOMContentLoaded', () => {
     artistRegistrationForm.addEventListener('submit', function (e) {
       e.preventDefault();
       const form = this;
+
+      if (form.dataset.submitting === 'true') {
+        return;
+      }
+      form.dataset.submitting = 'true';
+
       const formData = new FormData(form);
       const submitBtn = form.querySelector('button[type="submit"]');
       const originalText = submitBtn ? submitBtn.innerHTML : '';
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>জমা হচ্ছে...</span>';
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i> <span>জমা হচ্ছে...</span>';
       }
 
       const csrfToken = document.querySelector('meta[name="csrf-token"]')
@@ -688,9 +694,23 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         body: formData
       })
-        .then(res => {
-          if (!res.ok) throw new Error('Network error');
-          return res.json();
+        .then(async (res) => {
+          let data = {};
+          try {
+            data = await res.json();
+          } catch (err) {}
+
+          if (!res.ok) {
+            let errorMsg = data.message || 'একটি সমস্যা হয়েছে, অনুগ্রহ করে আবার চেষ্টা করুন।';
+            if (data.errors && typeof data.errors === 'object') {
+              const firstKey = Object.keys(data.errors)[0];
+              if (firstKey && data.errors[firstKey] && data.errors[firstKey][0]) {
+                errorMsg = data.errors[firstKey][0];
+              }
+            }
+            throw new Error(errorMsg);
+          }
+          return data;
         })
         .then(data => {
           form.reset();
@@ -706,9 +726,20 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         })
         .catch(err => {
-          form.submit();
+          console.error('Registration submission error:', err);
+          if (typeof Swal !== 'undefined') {
+            Swal.fire({
+              icon: 'error',
+              title: 'দুঃখিত!',
+              text: err.message || 'একটি সমস্যা হয়েছে, অনুগ্রহ করে আবার চেষ্টা করুন।',
+              confirmButtonColor: '#d4af37'
+            });
+          } else {
+            alert(err.message || 'একটি সমস্যা হয়েছে, অনুগ্রহ করে আবার চেষ্টা করুন।');
+          }
         })
         .finally(() => {
+          form.dataset.submitting = 'false';
           if (submitBtn) {
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalText;

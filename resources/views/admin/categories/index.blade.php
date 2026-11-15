@@ -31,7 +31,7 @@
             <th>Division Type</th>
             <th>Total Talents</th>
             <th>Status</th>
-            <th class="text-end pe-4">Actions</th>
+            <th class="col-actions text-end pe-4">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -61,16 +61,16 @@
                   <span class="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill px-3 py-1">Inactive</span>
                 @endif
               </td>
-              <td class="text-end pe-4">
-                <div class="d-inline-flex align-items-center gap-2">
-                  <a href="{{ route('admin.categories.edit', $category) }}" class="btn btn-action-edit" title="Edit Category">
-                    <i class="fa-solid fa-pen-to-square"></i>
+              <td class="col-actions text-end pe-4">
+                <div class="table-actions-group">
+                  <a href="{{ route('admin.categories.edit', $category) }}" class="action-btn-circle text-primary" title="Edit Category">
+                    <i class="fa-solid fa-pen small"></i>
                   </a>
-                  <form action="{{ route('admin.categories.destroy', $category) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this category?');">
+                  <form action="{{ route('admin.categories.destroy', $category) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-action-delete" title="Delete Category">
-                      <i class="fa-solid fa-trash-can"></i>
+                    <button type="button" class="action-btn-circle text-danger confirm-delete" title="Delete Category">
+                      <i class="fa-solid fa-trash small"></i>
                     </button>
                   </form>
                 </div>

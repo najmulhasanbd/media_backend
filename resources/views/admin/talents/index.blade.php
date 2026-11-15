@@ -42,7 +42,7 @@
             <th>Age &amp; Height</th>
             <th>Experience</th>
             <th>Verified</th>
-            <th class="text-end pe-4">Actions</th>
+            <th class="col-actions text-end pe-4">Actions</th>
           </tr>
         </thead>
         <tbody id="sortableTalentsBody">
@@ -91,17 +91,19 @@
                   <span class="badge bg-light text-muted border rounded-pill">Standard</span>
                 @endif
               </td>
-              <td class="text-end pe-4">
-                <a href="{{ route('admin.talents.edit', $talent) }}" class="action-btn-circle text-primary me-1" title="Edit Talent">
-                  <i class="fa-solid fa-pen small"></i>
-                </a>
-                <form action="{{ route('admin.talents.destroy', $talent) }}" method="POST" class="d-inline">
-                  @csrf
-                  @method('DELETE')
-                  <button type="button" class="action-btn-circle text-danger confirm-delete" title="Delete Talent">
-                    <i class="fa-solid fa-trash small"></i>
-                  </button>
-                </form>
+              <td class="col-actions text-end pe-4">
+                <div class="table-actions-group">
+                  <a href="{{ route('admin.talents.edit', $talent) }}" class="action-btn-circle text-primary" title="Edit Talent">
+                    <i class="fa-solid fa-pen small"></i>
+                  </a>
+                  <form action="{{ route('admin.talents.destroy', $talent) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" class="action-btn-circle text-danger confirm-delete" title="Delete Talent">
+                      <i class="fa-solid fa-trash small"></i>
+                    </button>
+                  </form>
+                </div>
               </td>
             </tr>
           @empty

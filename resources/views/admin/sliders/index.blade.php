@@ -40,7 +40,7 @@
             <th>Badge &amp; Headline</th>
             <th>CTA Buttons</th>
             <th>Status</th>
-            <th class="text-end pe-4">Actions</th>
+            <th class="col-actions text-end pe-4">Actions</th>
           </tr>
         </thead>
         <tbody id="sortableSliderBody">
@@ -76,17 +76,19 @@
                   <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-1">Inactive</span>
                 @endif
               </td>
-              <td class="text-end pe-4">
-                <a href="{{ route('admin.sliders.edit', $slider) }}" class="action-btn-circle text-primary me-1" title="Edit Slide">
-                  <i class="fa-solid fa-pen small"></i>
-                </a>
-                <form action="{{ route('admin.sliders.destroy', $slider) }}" method="POST" class="d-inline">
-                  @csrf
-                  @method('DELETE')
-                  <button type="button" class="action-btn-circle text-danger confirm-delete" title="Delete Slide">
-                    <i class="fa-solid fa-trash small"></i>
-                  </button>
-                </form>
+              <td class="col-actions text-end pe-4">
+                <div class="table-actions-group">
+                  <a href="{{ route('admin.sliders.edit', $slider) }}" class="action-btn-circle text-primary" title="Edit Slide">
+                    <i class="fa-solid fa-pen small"></i>
+                  </a>
+                  <form action="{{ route('admin.sliders.destroy', $slider) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" class="action-btn-circle text-danger confirm-delete" title="Delete Slide">
+                      <i class="fa-solid fa-trash small"></i>
+                    </button>
+                  </form>
+                </div>
               </td>
             </tr>
           @empty

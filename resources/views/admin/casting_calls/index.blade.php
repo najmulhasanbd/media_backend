@@ -34,7 +34,7 @@
             <th>Deadline</th>
             <th>Location</th>
             <th>Status</th>
-            <th class="text-end pe-4">Actions</th>
+            <th class="col-actions text-end pe-4">Actions</th>
           </tr>
         </thead>
         <tbody id="sortableCallsBody">
@@ -72,17 +72,19 @@
                   <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-3 py-1">Closed</span>
                 @endif
               </td>
-              <td class="text-end pe-4">
-                <a href="{{ route('admin.casting-calls.edit', $call) }}" class="action-btn-circle text-primary me-1" title="Edit Casting Call">
-                  <i class="fa-solid fa-pen small"></i>
-                </a>
-                <form action="{{ route('admin.casting-calls.destroy', $call) }}" method="POST" class="d-inline">
-                  @csrf
-                  @method('DELETE')
-                  <button type="button" class="action-btn-circle text-danger confirm-delete" title="Delete Casting Call">
-                    <i class="fa-solid fa-trash small"></i>
-                  </button>
-                </form>
+              <td class="col-actions text-end pe-4">
+                <div class="table-actions-group">
+                  <a href="{{ route('admin.casting-calls.edit', $call) }}" class="action-btn-circle text-primary" title="Edit Casting Call">
+                    <i class="fa-solid fa-pen small"></i>
+                  </a>
+                  <form action="{{ route('admin.casting-calls.destroy', $call) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" class="action-btn-circle text-danger confirm-delete" title="Delete Casting Call">
+                      <i class="fa-solid fa-trash small"></i>
+                    </button>
+                  </form>
+                </div>
               </td>
             </tr>
           @empty

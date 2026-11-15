@@ -17,6 +17,7 @@ use App\Models\Talent;
 use App\Models\Video;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -161,7 +162,7 @@ class FrontendController extends Controller
     /**
      * Handle frontend profile / audition submission.
      */
-    public function apply(Request $request): RedirectResponse
+    public function apply(Request $request): JsonResponse|RedirectResponse
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
