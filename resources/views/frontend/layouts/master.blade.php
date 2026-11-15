@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  <link rel="icon" type="image/x-icon" href="{{ \App\Models\Setting::get('site_favicon') ? asset(\App\Models\Setting::get('site_favicon')) : asset('favicon.ico') }}" />
   <title>@yield('title', 'Mind Blowing Media — মিডিয়া, প্রোডাকশন ও কাস্টিং পোর্টফোলিও')</title>
   <meta name="description" content="@yield('meta_description', 'নাটক, সিনেমা, ওয়েব সিরিজ ও বিজ্ঞাপনের প্রিমিয়ার মিডিয়া পোর্টফোলিও এবং কাস্টিং প্ল্যাটফর্ম।')" />
 

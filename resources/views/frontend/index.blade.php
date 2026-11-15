@@ -258,16 +258,6 @@
   </section>
   @endif
 
-        <div class="section-view-all">
-          <a href="{{ route('videos') }}" class="btn-outline-gold">
-            <i class="fa-solid fa-circle-play"></i>
-            <span>সকল ভিডিও পোর্টফোলিও দেখুন</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
 
 
   @if($castingCalls->isNotEmpty())

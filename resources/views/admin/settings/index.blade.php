@@ -316,6 +316,45 @@
           </div>
         </div>
 
+        <h5 class="fw-bold text-dark mb-4 mt-2 pt-3 border-top d-flex align-items-center gap-2">
+          <span class="rounded-circle bg-warning-subtle text-warning p-2 d-inline-flex" style="font-size: 0.9rem;"><i class="fa-solid fa-share-nodes"></i></span>
+          Social Media Profiles &amp; Channel URLs
+        </h5>
+
+        <div class="row g-4 mb-4">
+          <div class="col-md-6">
+            <label class="form-label">Facebook Page URL</label>
+            <div class="input-group-modern">
+              <span class="input-group-text"><i class="fa-brands fa-facebook-f text-primary"></i></span>
+              <input type="url" name="social_facebook" class="form-control" placeholder="https://facebook.com/..." value="{{ $settings['social_facebook'] ?? '' }}">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Instagram Profile URL</label>
+            <div class="input-group-modern">
+              <span class="input-group-text"><i class="fa-brands fa-instagram text-danger"></i></span>
+              <input type="url" name="social_instagram" class="form-control" placeholder="https://instagram.com/..." value="{{ $settings['social_instagram'] ?? '' }}">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">YouTube Channel URL</label>
+            <div class="input-group-modern">
+              <span class="input-group-text"><i class="fa-brands fa-youtube text-danger"></i></span>
+              <input type="url" name="social_youtube" class="form-control" placeholder="https://youtube.com/@..." value="{{ $settings['social_youtube'] ?? '' }}">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Vimeo / LinkedIn URL</label>
+            <div class="input-group-modern">
+              <span class="input-group-text"><i class="fa-brands fa-vimeo-v text-info"></i></span>
+              <input type="url" name="social_vimeo" class="form-control" placeholder="https://vimeo.com/..." value="{{ $settings['social_vimeo'] ?? '' }}">
+            </div>
+          </div>
+        </div>
+
         <div class="pt-3 border-top">
           <button type="submit" class="btn btn-gold-action px-5 py-2">
             <i class="fa-solid fa-save me-2"></i> Save Contact Settings

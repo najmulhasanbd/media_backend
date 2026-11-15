@@ -37,6 +37,10 @@ class SettingController extends Controller
             'stat_artists',
             'stat_films',
             'stat_satisfaction',
+            'social_facebook',
+            'social_instagram',
+            'social_youtube',
+            'social_vimeo',
         ];
 
         foreach ($fields as $field) {

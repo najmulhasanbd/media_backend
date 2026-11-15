@@ -760,6 +760,22 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    const talentBtn = e.target.closest('.js-open-talent-modal');
+    if (talentBtn) {
+      openTalentDetail({
+        name: talentBtn.dataset.name,
+        category: talentBtn.dataset.category,
+        specialty: talentBtn.dataset.specialty,
+        age: talentBtn.dataset.age,
+        height: talentBtn.dataset.height,
+        expLabel: talentBtn.dataset.experience,
+        photo: talentBtn.dataset.photo,
+        bio: talentBtn.dataset.bio,
+        videoLink: talentBtn.dataset.audition,
+        driveLink: talentBtn.dataset.drive,
+      });
+    }
+
     const applyBtn = e.target.closest('.js-apply-casting');
     if (applyBtn) {
       const regSection = document.getElementById('registration-section');

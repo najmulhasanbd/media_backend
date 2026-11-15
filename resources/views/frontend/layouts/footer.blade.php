@@ -13,10 +13,18 @@
         বাংলাদেশের অন্যতম আধুনিক কাস্টিং এজেন্সি ও প্রোডাকশন পোর্টফোলিও হাউস। নাটক, সিনেমা, ওটিটি ও বিজ্ঞাপনের পূর্ণাঙ্গ সৃজনশীল অংশীদার।
       </p>
       <div class="social-row">
-        <a href="#hero" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="#hero" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#hero" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-        <a href="#hero" aria-label="Vimeo"><i class="fa-brands fa-vimeo-v"></i></a>
+        @if(\App\Models\Setting::get('social_facebook'))
+          <a href="{{ \App\Models\Setting::get('social_facebook') }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        @endif
+        @if(\App\Models\Setting::get('social_instagram'))
+          <a href="{{ \App\Models\Setting::get('social_instagram') }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        @endif
+        @if(\App\Models\Setting::get('social_youtube'))
+          <a href="{{ \App\Models\Setting::get('social_youtube') }}" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        @endif
+        @if(\App\Models\Setting::get('social_vimeo'))
+          <a href="{{ \App\Models\Setting::get('social_vimeo') }}" target="_blank" rel="noopener noreferrer" aria-label="Vimeo"><i class="fa-brands fa-vimeo-v"></i></a>
+        @endif
       </div>
     </div>
 
