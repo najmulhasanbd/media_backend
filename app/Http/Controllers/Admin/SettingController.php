@@ -31,6 +31,7 @@ class SettingController extends Controller
             'site_tagline',
             'site_email',
             'site_phone',
+            'site_whatsapp',
             'site_address',
             'showreel_url',
             'stat_projects',
