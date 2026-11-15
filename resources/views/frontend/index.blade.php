@@ -1,13 +1,14 @@
-﻿@extends('frontend.layouts.master')
+@extends('frontend.layouts.master')
 
 @section('title', 'Mind Blowing Media — মিডিয়া, প্রোডাকশন ও কাস্টিং পোর্টফোলিও')
 
 @section('content')
+  @if($heroSliders->isNotEmpty())
   <!-- ==================== HERO SECTION (SLIDER #1 + THUMBS) ==================== -->
   <section class="hero-section" id="hero">
     <div class="swiper hero-swiper" id="heroSlider">
       <div class="swiper-wrapper">
-        @forelse($heroSliders as $index => $slider)
+        @foreach($heroSliders as $index => $slider)
           <div class="swiper-slide hero-slide">
             <div class="hero-bg" style="background-image: url('{{ $slider->image ? asset($slider->image) : asset('frontend/assets/images/hero-cinema.jpg') }}');"></div>
             <div class="hero-overlay"></div>
@@ -66,46 +67,16 @@
 
               <div class="hero-meta-strip">
                 <div class="meta-chip"><i class="fa-solid fa-video"></i> 4K HDR Cinema</div>
-                <div class="meta-chip"><i class="fa-solid fa-users"></i> {{ $settings['stat_artists'] ?? '১৮৫০+' }} ট্যালেন্ট রোস্টার</div>
-                <div class="meta-chip"><i class="fa-solid fa-award"></i> {{ $settings['stat_projects'] ?? '৫০০+' }} সম্পন্ন প্রজেক্ট</div>
+                @if(!empty($settings['stat_artists']))
+                  <div class="meta-chip"><i class="fa-solid fa-users"></i> {{ $settings['stat_artists'] }} ট্যালেন্ট রোস্টার</div>
+                @endif
+                @if(!empty($settings['stat_projects']))
+                  <div class="meta-chip"><i class="fa-solid fa-award"></i> {{ $settings['stat_projects'] }} সম্পন্ন প্রজেক্ট</div>
+                @endif
               </div>
             </div>
           </div>
-        @empty
-          <!-- Fallback slide if no dynamic slider created yet -->
-          <div class="swiper-slide hero-slide">
-            <div class="hero-bg" style="background-image: url('{{ asset('frontend/assets/images/hero-cinema.jpg') }}');"></div>
-            <div class="hero-overlay"></div>
-            <div class="container hero-content">
-              <div class="hero-badge">
-                <i class="fa-solid fa-star"></i>
-                <span>বাংলাদেশের সেরা কাস্টিং ও মিডিয়া পোর্টফোলিও প্ল্যাটফর্ম</span>
-              </div>
-              <h1 class="hero-title">
-                নাটক, সিনেমা ও বিজ্ঞাপনের
-                <span class="text-gold-gradient">সৃজনশীল মিডিয়া ও প্রোডাকশন হাউস</span>
-              </h1>
-              <p class="hero-desc">
-                গল্পের গভীরতা, ৪কে সিনেমাটোগ্রাফি এবং দেশের সেরা অভিনয়শিল্পীদের সমন্বয়ে আমরা তৈরি করি কালজয়ী ভিজ্যুয়াল অভিজ্ঞতা।
-              </p>
-              <div class="hero-cta-row">
-                <a href="#portfolio-section" class="btn-gold-pill btn-lg">
-                  <i class="fa-solid fa-film"></i>
-                  <span>পোর্টফোলিও দেখুন</span>
-                </a>
-                <button class="btn-outline-gold btn-lg js-play-reel" data-title="Mind Blowing Media ২০২৬ মেগা শো-রিল" data-category="অফিসিয়াল শো-রিল • ২:৪৫ মিনিট" data-poster="{{ asset('frontend/assets/images/hero-cinema.jpg') }}" data-video="{{ $settings['showreel_url'] ?? 'https://www.youtube.com/watch?v=aqz-KE-bpKQ' }}" type="button">
-                  <i class="fa-solid fa-circle-play"></i>
-                  <span>শো-রিল চালু করুন</span>
-                </button>
-              </div>
-              <div class="hero-meta-strip">
-                <div class="meta-chip"><i class="fa-solid fa-video"></i> 4K HDR Cinema</div>
-                <div class="meta-chip"><i class="fa-solid fa-users"></i> {{ $settings['stat_artists'] ?? '১৮৫০+' }} ট্যালেন্ট রোস্টার</div>
-                <div class="meta-chip"><i class="fa-solid fa-award"></i> {{ $settings['stat_projects'] ?? '১৮+' }} অ্যাওয়ার্ড ও স্বীকৃতি</div>
-              </div>
-            </div>
-          </div>
-        @endforelse
+        @endforeach
       </div>
 
       <!-- Hero Controls & Synced Thumbnail Strip -->
@@ -135,7 +106,7 @@
                 };
               @endphp
 
-              @forelse($heroSliders as $index => $slider)
+              @foreach($heroSliders as $index => $slider)
                 <div class="swiper-slide thumb-card">
                   <img src="{{ $slider->image ? asset($slider->image) : asset('frontend/assets/images/hero-cinema.jpg') }}" alt="{{ strip_tags($slider->title) }}" />
                   <div class="thumb-info">
@@ -143,38 +114,32 @@
                     <span class="thumb-label">{{ Str::limit(strip_tags($slider->title), 22) }}</span>
                   </div>
                 </div>
-              @empty
-                <div class="swiper-slide thumb-card">
-                  <img src="{{ asset('frontend/assets/images/hero-cinema.jpg') }}" alt="সিনেমা ও নাটক শো-রিল" />
-                  <div class="thumb-info">
-                    <span class="thumb-num">০১</span>
-                    <span class="thumb-label">সিনেমা ও প্রোডাকশন</span>
-                  </div>
-                </div>
-              @endforelse
+              @endforeach
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+  @endif
 
+  @if(!empty($settings['stat_projects']) || !empty($settings['stat_artists']) || !empty($settings['stat_films']) || !empty($settings['stat_satisfaction']))
   <!-- ==================== ODOMETER IMPACT STATS BAR ==================== -->
   <section class="stats-section" id="stats-section">
     <div class="container">
       <div class="stats-odometer-card" id="statsStrip">
         @php
-          $pNum = preg_replace('/[^0-9]/', '', $settings['stat_projects'] ?? '500') ?: '500';
-          $pPlus = str_contains($settings['stat_projects'] ?? '+', '+') ? '+' : '';
+          $pNum = preg_replace('/[^0-9]/', '', $settings['stat_projects'] ?? '0') ?: '0';
+          $pPlus = str_contains($settings['stat_projects'] ?? '', '+') ? '+' : '';
 
-          $aNum = preg_replace('/[^0-9]/', '', $settings['stat_artists'] ?? '1200') ?: '1200';
-          $aPlus = str_contains($settings['stat_artists'] ?? '+', '+') ? '+' : '';
+          $aNum = preg_replace('/[^0-9]/', '', $settings['stat_artists'] ?? '0') ?: '0';
+          $aPlus = str_contains($settings['stat_artists'] ?? '', '+') ? '+' : '';
 
-          $fNum = preg_replace('/[^0-9]/', '', $settings['stat_films'] ?? '85') ?: '85';
-          $fPlus = str_contains($settings['stat_films'] ?? '+', '+') ? '+' : '';
+          $fNum = preg_replace('/[^0-9]/', '', $settings['stat_films'] ?? '0') ?: '0';
+          $fPlus = str_contains($settings['stat_films'] ?? '', '+') ? '+' : '';
 
-          $sNum = preg_replace('/[^0-9]/', '', $settings['stat_satisfaction'] ?? '99') ?: '99';
-          $sSuffix = str_contains($settings['stat_satisfaction'] ?? '%', '%') ? '%' : '+';
+          $sNum = preg_replace('/[^0-9]/', '', $settings['stat_satisfaction'] ?? '0') ?: '0';
+          $sSuffix = str_contains($settings['stat_satisfaction'] ?? '', '%') ? '%' : '+';
         @endphp
 
         <div class="stat-item">
@@ -211,7 +176,9 @@
       </div>
     </div>
   </section>
+  @endif
 
+  @if($videos->isNotEmpty())
   <!-- ==================== PORTFOLIO SECTION (SLIDER #2 — FILTERABLE MULTI-SLIDER) ==================== -->
   <section class="portfolio-section section-pad" id="portfolio-section">
     <div class="container">
@@ -224,7 +191,7 @@
         <div class="section-header-actions">
           <div class="filter-pills" id="portfolioFilters" role="tablist">
             <button class="filter-pill active" data-filter="all" type="button">সবগুলো</button>
-            <button class="filter-pill" data-filter="film" type="button">সিনেমা</button>
+            <button class="filter-pill" data-filter="cinema" type="button">সিনেমা</button>
             <button class="filter-pill" data-filter="drama" type="button">নাটক ও ওটিটি</button>
             <button class="filter-pill" data-filter="tvc" type="button">বিজ্ঞাপন (TVC)</button>
             <button class="filter-pill" data-filter="music" type="button">মিউজিক ভিডিও</button>
@@ -243,103 +210,53 @@
       <div class="slider-wrapper">
         <div class="swiper portfolio-swiper" id="portfolioSlider">
           <div class="swiper-wrapper" id="portfolioWrapper">
-            <!-- Slide Cards (Dynamically filterable via JS, rendered cleanly in HTML too) -->
-            <article class="swiper-slide portfolio-card" data-category="film">
-              <div class="card-media">
-                <img src="{{ asset('frontend/assets/images') }}/portfolio-film.jpg" alt="রাত্রির শহর — ফিচার ফিল্ম" />
-                <span class="card-badge">সিনেমা • 4K</span>
-                <span class="card-duration"><i class="fa-regular fa-clock"></i> ২:১৫</span>
-                <button class="card-play-btn js-play-reel" data-title="রাত্রির শহর (The Night City)" data-category="ফিচার ফিল্ম • পরিচালক: রাফি আহমেদ" data-poster="{{ asset('frontend/assets/images') }}/portfolio-film.jpg" data-video="https://www.youtube.com/watch?v=HomAZcKm3fk" type="button" aria-label="Play রাত্রির শহর">
-                  <i class="fa-solid fa-play"></i>
-                </button>
-              </div>
-              <div class="card-body">
-                <div class="card-meta-top">
-                  <span><i class="fa-solid fa-clapperboard"></i> রাফি আহমেদ</span>
-                  <span>২০২৬</span>
+            @foreach($videos as $video)
+              <article class="swiper-slide portfolio-card" data-category="{{ strtolower($video->category) }}">
+                <div class="card-media">
+                  <img src="{{ asset($video->thumbnail ?? 'frontend/assets/images/portfolio-film.jpg') }}" alt="{{ $video->title }}" />
+                  <span class="card-badge">{{ strtoupper($video->category) }}</span>
+                  @if(!empty($video->duration))
+                    <span class="card-duration"><i class="fa-regular fa-clock"></i> {{ $video->duration }}</span>
+                  @endif
+                  <button class="card-play-btn js-play-reel" 
+                          data-title="{{ $video->title }}" 
+                          data-category="{{ strtoupper($video->category) }} • {{ $video->duration ?? '' }}" 
+                          data-poster="{{ asset($video->thumbnail ?? 'frontend/assets/images/portfolio-film.jpg') }}" 
+                          data-video="{{ $video->youtube_url }}" 
+                          type="button" 
+                          aria-label="Play {{ $video->title }}">
+                    <i class="fa-solid fa-play"></i>
+                  </button>
                 </div>
-                <h3 class="card-title">রাত্রির শহর — নিও-নয়্যার থ্রিলার</h3>
-                <p class="card-desc">ঢাকার বর্ষার রাতের পটভূমিতে নির্মিত অ্যাকশন-থ্রিলার পূর্ণদৈর্ঘ্য চলচ্চিত্র ও কাস্টিং প্রজেক্ট।</p>
-              </div>
-            </article>
-
-            <article class="swiper-slide portfolio-card" data-category="tvc">
-              <div class="card-media">
-                <img src="{{ asset('frontend/assets/images') }}/hero-studio.jpg" alt="অরোরা গোল্ড — মেগা টিভিসি" />
-                <span class="card-badge">বিজ্ঞাপন (TVC)</span>
-                <span class="card-duration"><i class="fa-regular fa-clock"></i> ০:৪৫</span>
-                <button class="card-play-btn js-play-reel" data-title="অরোরা গোল্ড লাক্সারি টিভিসি" data-category="ব্র্যান্ড ক্যাম্পেইন • ডিরেক্টর: তানভীর হাসান" data-poster="{{ asset('frontend/assets/images') }}/hero-studio.jpg" data-video="https://www.youtube.com/watch?v=mN0zPOpADL4" type="button" aria-label="Play অরোরা গোল্ড">
-                  <i class="fa-solid fa-play"></i>
-                </button>
-              </div>
-              <div class="card-body">
-                <div class="card-meta-top">
-                  <span><i class="fa-solid fa-bullhorn"></i> অরোরা গ্রুপ</span>
-                  <span>২০২৬</span>
+                <div class="card-body">
+                  <div class="card-meta-top">
+                    @if(!empty($video->director))
+                      <span><i class="fa-solid fa-clapperboard"></i> {{ $video->director }}</span>
+                    @endif
+                    @if(!empty($video->client))
+                      <span>{{ $video->client }}</span>
+                    @endif
+                  </div>
+                  <h3 class="card-title">{{ $video->title }}</h3>
+                  @if(!empty($video->description))
+                    <p class="card-desc">{{ Str::limit($video->description, 90) }}</p>
+                  @endif
                 </div>
-                <h3 class="card-title">অরোরা গোল্ড — ফেস্টিভ টিভিসি ক্যাম্পেইন</h3>
-                <p class="card-desc">উচ্চমানের স্টুডিও সেট ডিজাইন, মোশন কন্ট্রোল ক্যামেরা ও ১২ জন শীর্ষ মডেলের অংশগ্রহণে নির্মিত টিভিসি।</p>
-              </div>
-            </article>
-
-            <article class="swiper-slide portfolio-card" data-category="music">
-              <div class="card-media">
-                <img src="{{ asset('frontend/assets/images') }}/portfolio-music.jpg" alt="সোনালি রোদ — মিউজিক ভিডিও" />
-                <span class="card-badge">মিউজিক ভিডিও</span>
-                <span class="card-duration"><i class="fa-regular fa-clock"></i> ৪:১০</span>
-                <button class="card-play-btn js-play-reel" data-title="সোনালি রোদ — অফিসিয়াল মিউজিক ফিল্ম" data-category="মিউজিক ভিডিও • ১.২ কোটি+ ভিউ" data-poster="{{ asset('frontend/assets/images') }}/portfolio-music.jpg" data-video="https://www.youtube.com/watch?v=YE7VzlLtp-4" type="button" aria-label="Play সোনালি রোদ">
-                  <i class="fa-solid fa-play"></i>
-                </button>
-              </div>
-              <div class="card-body">
-                <div class="card-meta-top">
-                  <span><i class="fa-solid fa-music"></i> মেঘদূত রেকর্ডস</span>
-                  <span>২০২৬</span>
-                </div>
-                <h3 class="card-title">সোনালি রোদ — সিন্থ-রক মিউজিক ফিল্ম</h3>
-                <p class="card-desc">অ্যানামরফিক লেন্স ও গোল্ডেন ভলিউমেট্রিক লাইটিংয়ে নির্মিত দেশের অন্যতম জনপ্রিয় মিউজিক ভিডিও।</p>
-              </div>
-            </article>
-
-            <article class="swiper-slide portfolio-card" data-category="drama">
-              <div class="card-media">
-                <img src="{{ asset('frontend/assets/images') }}/hero-cinema.jpg" alt="মায়াজাল — ওটিটি ওয়েব সিরিজ" />
-                <span class="card-badge">নাটক ও ওটিটি</span>
-                <span class="card-duration"><i class="fa-regular fa-clock"></i> ১:৫৫</span>
-                <button class="card-play-btn js-play-reel" data-title="মায়াজাল — ৮ পর্বের ওটিটি সিরিজ" data-category="ওয়েব সিরিজ • কাস্টিং ও প্রোডাকশন" data-poster="{{ asset('frontend/assets/images') }}/hero-cinema.jpg" data-video="https://www.youtube.com/watch?v=eRsGyueVLvQ" type="button" aria-label="Play মায়াজাল">
-                  <i class="fa-solid fa-play"></i>
-                </button>
-              </div>
-              <div class="card-body">
-                <div class="card-meta-top">
-                  <span><i class="fa-solid fa-tv"></i> প্রাইম ওটিটি</span>
-                  <span>২০২৫</span>
-                </div>
-                <h3 class="card-title">মায়াজাল — ক্রাইম মিস্ট্রি ওয়েব সিরিজ</h3>
-                <p class="card-desc">সম্পূর্ণ কাস্টিং, লোকেশন স্কাউটিং এবং ৪কে পোস্ট-প্রোডাকশন সম্পন্ন করেছে Mind Blowing Media টিম।</p>
-              </div>
-            </article>
-
-            <article class="swiper-slide portfolio-card" data-category="tvc">
-              <div class="card-media">
-                <img src="{{ asset('frontend/assets/images') }}/portfolio-casting.jpg" alt="ভেলভেট স্টুডিও — ফ্যাশন ফিল্ম" />
-                <span class="card-badge">বিজ্ঞাপন (TVC)</span>
-                <span class="card-duration"><i class="fa-regular fa-clock"></i> ১:০৫</span>
-                <button class="card-play-btn js-play-reel" data-title="ভেলভেট অটাম — ফ্যাশন ফিল্ম" data-category="কমার্শিয়াল • কালার ও এডিটিং" data-poster="{{ asset('frontend/assets/images') }}/portfolio-casting.jpg" data-video="https://www.youtube.com/watch?v=aqz-KE-bpKQ" type="button" aria-label="Play ভেলভেট অটাম">
-                  <i class="fa-solid fa-play"></i>
-                </button>
-              </div>
-              <div class="card-body">
-                <div class="card-meta-top">
-                  <span><i class="fa-solid fa-shirt"></i> ভেলভেট লাইফস্টাইল</span>
-                  <span>২০২৬</span>
-                </div>
-                <h3 class="card-title">ভেলভেট অটাম — এডিটোরিয়াল ফ্যাশন ফিল্ম</h3>
-                <p class="card-desc">মিনিমাল ডার্ক-গোল্ড এস্থেটিক ও পোর্ট্রেট সিনেমাটোগ্রাফিতে নির্মিত ব্র্যান্ড লঞ্চ ক্যাম্পেইন।</p>
-              </div>
-            </article>
+              </article>
+            @endforeach
           </div>
         </div>
+
+        <div class="section-view-all">
+          <a href="{{ route('videos') }}" class="btn-outline-gold">
+            <i class="fa-solid fa-circle-play"></i>
+            <span>সকল ভিডিও পোর্টফোলিও দেখুন</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  @endif
 
         <div class="section-view-all">
           <a href="{{ route('videos') }}" class="btn-outline-gold">
@@ -438,6 +355,7 @@
     </div>
   </section>
 
+  @if($castingCalls->isNotEmpty())
   <!-- ==================== OPEN CASTING CALLS SLIDER ==================== -->
   <section class="casting-calls-section section-pad" id="casting-calls">
     <div class="container">
@@ -459,86 +377,51 @@
 
       <div class="swiper casting-swiper" id="castingCallsSlider">
         <div class="swiper-wrapper">
-          <article class="swiper-slide casting-card">
-            <div class="casting-top">
-              <span class="casting-status status-urgent"><i class="fa-solid fa-fire"></i> জরুরি কাস্টিং</span>
-              <span class="casting-deadline">ডেডলাইন: ২৫ নভেম্বর</span>
-            </div>
-            <h3>লিড ফিমেল — রোমান্টিক ওয়েব ফিল্ম</h3>
-            <p class="casting-desc">প্রাইম ওটিটির ৯০ মিনিটের রোমান্টিক-ড্রামা ফিল্মের প্রধান নারী চরিত্রের জন্য সাবলীল অভিনেত্রী প্রয়োজন।</p>
-            <ul class="casting-specs">
-              <li><i class="fa-solid fa-user-tag"></i> ক্যাটাগরি: <strong>অভিনেত্রী</strong></li>
-              <li><i class="fa-solid fa-cake-candles"></i> বয়স: <strong>২১-২৬ বছর</strong></li>
-              <li><i class="fa-solid fa-location-dot"></i> শ্যুট: <strong>ঢাকা ও কক্সবাজার</strong></li>
-              <li><i class="fa-solid fa-wallet"></i> সম্মানী: <strong>পেইড প্রজেক্ট</strong></li>
-            </ul>
-            <button class="btn-gold-pill btn-sm w-full js-apply-casting" data-category="অভিনেত্রী" data-role="লিড ফিমেল (রোমান্টিক ওয়েব ফিল্ম)" type="button">
-              <i class="fa-solid fa-paper-plane"></i>
-              <span>এই চরিত্রে আবেদন করুন</span>
-            </button>
-          </article>
-
-          <article class="swiper-slide casting-card">
-            <div class="casting-top">
-              <span class="casting-status status-open"><i class="fa-solid fa-circle-dot"></i> ওপেন অডিশন</span>
-              <span class="casting-deadline">ডেডলাইন: ৩০ নভেম্বর</span>
-            </div>
-            <h3>অ্যাকশন লিড — থ্রিলার ফিচার ফিল্ম</h3>
-            <p class="casting-desc">“রাত্রির শহর ২” সিনেমার অ্যাকশন-নির্ভর চরিত্রের জন্য ফিট এবং স্ক্রিন-টেস্ট রেডি অভিনেতা খোঁজা হচ্ছে।</p>
-            <ul class="casting-specs">
-              <li><i class="fa-solid fa-user-tag"></i> ক্যাটাগরি: <strong>অভিনেতা</strong></li>
-              <li><i class="fa-solid fa-cake-candles"></i> বয়স: <strong>২৫-৩৪ বছর</strong></li>
-              <li><i class="fa-solid fa-location-dot"></i> শ্যুট: <strong>ঢাকা ও সিলেট</strong></li>
-              <li><i class="fa-solid fa-wallet"></i> সম্মানী: <strong>পেইড প্রজেক্ট</strong></li>
-            </ul>
-            <button class="btn-gold-pill btn-sm w-full js-apply-casting" data-category="অভিনেতা" data-role="অ্যাকশন লিড (থ্রিলার ফিচার ফিল্ম)" type="button">
-              <i class="fa-solid fa-paper-plane"></i>
-              <span>এই চরিত্রে আবেদন করুন</span>
-            </button>
-          </article>
-
-          <article class="swiper-slide casting-card">
-            <div class="casting-top">
-              <span class="casting-status status-urgent"><i class="fa-solid fa-star"></i> মেগা টিভিসি</span>
-              <span class="casting-deadline">ডেডলাইন: ২২ নভেম্বর</span>
-            </div>
-            <h3>ব্র্যান্ড ফেস — ফেস্টিভ ফ্যাশন টিভিসি</h3>
-            <p class="casting-desc">জাতীয় টেলিকম ও লাইফস্টাইল ব্র্যান্ডের টিভিসি এবং বিলবোর্ড ক্যাম্পেইনের জন্য স্মার্ট ও ক্যামেরা-ফ্রেন্ডলি মডেল।</p>
-            <ul class="casting-specs">
-              <li><i class="fa-solid fa-user-tag"></i> ক্যাটাগরি: <strong>মডেল</strong></li>
-              <li><i class="fa-solid fa-cake-candles"></i> বয়স: <strong>১৯-২৮ বছর</strong></li>
-              <li><i class="fa-solid fa-location-dot"></i> শ্যুট: <strong>বনানী স্টুডিও, ঢাকা</strong></li>
-              <li><i class="fa-solid fa-wallet"></i> সম্মানী: <strong>চুক্তিভিত্তিক</strong></li>
-            </ul>
-            <button class="btn-gold-pill btn-sm w-full js-apply-casting" data-category="মডেল" data-role="ব্র্যান্ড ফেস (ফেস্টিভ ফ্যাশন টিভিসি)" type="button">
-              <i class="fa-solid fa-paper-plane"></i>
-              <span>এই চরিত্রে আবেদন করুন</span>
-            </button>
-          </article>
-
-          <article class="swiper-slide casting-card">
-            <div class="casting-top">
-              <span class="casting-status status-open"><i class="fa-solid fa-sparkles"></i> ফ্রেশার স্বাগতম</span>
-              <span class="casting-deadline">ডেডলাইন: ০৫ ডিসেম্বর</span>
-            </div>
-            <h3>ভয়েস আর্টিস্ট ও ডাবিং পারফর্মার</h3>
-            <p class="casting-desc">ওটিটি সিরিজ, ডকুমেন্টারি এবং টিভিসি ভয়েস-ওভারের জন্য স্পষ্ট বাংলা ও ইংরেজি উচ্চারণসম্পন্ন নতুন কণ্ঠ।</p>
-            <ul class="casting-specs">
-              <li><i class="fa-solid fa-user-tag"></i> ক্যাটাগরি: <strong>ভয়েস আর্টিস্ট</strong></li>
-              <li><i class="fa-solid fa-cake-candles"></i> বয়স: <strong>১৮-৪০ বছর</strong></li>
-              <li><i class="fa-solid fa-location-dot"></i> স্টুডিও: <strong>তেজগাঁও অডিও ল্যাব</strong></li>
-              <li><i class="fa-solid fa-wallet"></i> সম্মানী: <strong>পেইড প্রজেক্ট</strong></li>
-            </ul>
-            <button class="btn-gold-pill btn-sm w-full js-apply-casting" data-category="ভয়েস আর্টিস্ট" data-role="ভয়েস আর্টিস্ট ও ডাবিং পারফর্মার" type="button">
-              <i class="fa-solid fa-paper-plane"></i>
-              <span>এই চরিত্রে আবেদন করুন</span>
-            </button>
-          </article>
+          @foreach($castingCalls as $call)
+            <article class="swiper-slide casting-card">
+              <div class="casting-top">
+                <span class="casting-status {{ $call->status === 'urgent' ? 'status-urgent' : 'status-open' }}">
+                  <i class="fa-solid {{ $call->status === 'urgent' ? 'fa-fire' : 'fa-circle-dot' }}"></i> 
+                  {{ $call->status === 'urgent' ? 'জরুরি কাস্টিং' : 'ওপেন অডিশন' }}
+                </span>
+                @if(!empty($call->deadline))
+                  <span class="casting-deadline">ডেডলাইন: {{ \Carbon\Carbon::parse($call->deadline)->format('d M') }}</span>
+                @endif
+              </div>
+              <h3>{{ $call->title }}</h3>
+              @if(!empty($call->description))
+                <p class="casting-desc">{{ Str::limit($call->description, 100) }}</p>
+              @endif
+              <ul class="casting-specs">
+                @if(!empty($call->category))
+                  <li><i class="fa-solid fa-user-tag"></i> ক্যাটাগরি: <strong>{{ $call->category }}</strong></li>
+                @endif
+                @if(!empty($call->age_range))
+                  <li><i class="fa-solid fa-cake-candles"></i> বয়স: <strong>{{ $call->age_range }}</strong></li>
+                @endif
+                @if(!empty($call->location))
+                  <li><i class="fa-solid fa-location-dot"></i> শ্যুট: <strong>{{ $call->location }}</strong></li>
+                @endif
+                @if(!empty($call->budget))
+                  <li><i class="fa-solid fa-wallet"></i> সম্মানী: <strong>{{ $call->budget }}</strong></li>
+                @endif
+              </ul>
+              <button class="btn-gold-pill btn-sm w-full js-apply-casting" 
+                      data-category="{{ $call->category ?? 'অভিনেতা' }}" 
+                      data-role="{{ $call->title }}" 
+                      type="button">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>এই চরিত্রে আবেদন করুন</span>
+              </button>
+            </article>
+          @endforeach
         </div>
       </div>
     </div>
   </section>
+  @endif
 
+  @if($talents->isNotEmpty())
   <!-- ==================== FILTERABLE TALENT DIRECTORY ==================== -->
   <section class="directory-section section-pad" id="talent-directory">
     <div class="container">
@@ -550,7 +433,7 @@
         </div>
         <div class="directory-count-pill" id="directoryCountPill">
           <i class="fa-solid fa-user-check"></i>
-          <span><strong id="directoryCountNum">6</strong> টি প্রোফাইল দেখাচ্ছে</span>
+          <span><strong id="directoryCountNum">{{ $talents->count() }}</strong> টি প্রোফাইল দেখাচ্ছে</span>
         </div>
       </div>
 
@@ -609,6 +492,7 @@
       </div>
     </div>
   </section>
+  @endif
 
   <!-- ==================== NEW ARTIST REGISTRATION FORM ==================== -->
   <section class="registration-section section-pad" id="registration-section">
@@ -712,6 +596,7 @@
     </div>
   </section>
 
+  @if($reviews->isNotEmpty())
   <!-- ==================== BRAND MARQUEE & TESTIMONIALS (SLIDER #5 & #6) ==================== -->
   <section class="testimonials-section section-pad" id="testimonials-section">
     <div class="container">
@@ -730,69 +615,32 @@
         </div>
       </div>
 
-      <!-- Brand Marquee Slider -->
-      <div class="swiper brand-swiper" id="brandSlider">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide brand-pill"><i class="fa-solid fa-film"></i> DHAKA CINEMA</div>
-          <div class="swiper-slide brand-pill"><i class="fa-solid fa-tv"></i> CHORKI ORIGINALS</div>
-          <div class="swiper-slide brand-pill"><i class="fa-solid fa-bolt"></i> AURORA TELECOM</div>
-          <div class="swiper-slide brand-pill"><i class="fa-solid fa-crown"></i> VELVET STUDIO</div>
-          <div class="swiper-slide brand-pill"><i class="fa-solid fa-music"></i> MEGHDOOT RECORDS</div>
-          <div class="swiper-slide brand-pill"><i class="fa-solid fa-video"></i> BENGAL PICTURES</div>
-          <div class="swiper-slide brand-pill"><i class="fa-solid fa-star"></i> PRIME STREAM</div>
-        </div>
-      </div>
-
       <!-- Client Testimonials Slider -->
       <div class="swiper testimonial-swiper mt-8" id="testimonialSlider">
         <div class="swiper-wrapper">
-          <div class="swiper-slide testimonial-card">
-            <div class="quote-stars">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-            </div>
-            <p class="quote-text">
-              “Mind Blowing Media আমাদের ঈদ স্পেশাল টিভিসি ক্যাম্পেইনের জন্য মাত্র ৪৮ ঘণ্টায় যে কাস্টিং ও শুটিং কোয়ালিটি উপহার দিয়েছে, তা সত্যিই আন্তর্জাতিক মানের।”
-            </p>
-            <div class="quote-author">
-              <div class="author-avatar">না</div>
-              <div>
-                <h4>নাফিস ইকবাল</h4>
-                <span>ব্র্যান্ড ডিরেক্টর, অরোরা গ্রুপ</span>
+          @foreach($reviews as $review)
+            <div class="swiper-slide testimonial-card">
+              <div class="quote-stars">
+                @for($i = 1; $i <= ($review->rating ?? 5); $i++)
+                  <i class="fa-solid fa-star"></i>
+                @endfor
+              </div>
+              <p class="quote-text">
+                “{{ $review->review }}”
+              </p>
+              <div class="quote-author">
+                @if(!empty($review->photo))
+                  <img src="{{ asset($review->photo) }}" alt="{{ $review->name }}" class="rounded-circle" style="width: 44px; height: 44px; object-fit: cover;">
+                @else
+                  <div class="author-avatar">{{ mb_substr($review->name, 0, 1) }}</div>
+                @endif
+                <div>
+                  <h4>{{ $review->name }}</h4>
+                  <span>{{ $review->designation }}</span>
+                </div>
               </div>
             </div>
-          </div>
-
-          <div class="swiper-slide testimonial-card">
-            <div class="quote-stars">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-            </div>
-            <p class="quote-text">
-              “একজন নতুন অভিনয়শিল্পী হিসেবে Mind Blowing Media-এর অডিশন প্ল্যাটফর্ম আমাকে দেশের সেরা ওয়েব সিরিজে কাজ করার সুযোগ করে দিয়েছে।”
-            </p>
-            <div class="quote-author">
-              <div class="author-avatar">রি</div>
-              <div>
-                <h4>রাইসা তাবাসসুম</h4>
-                <span>ফিচার্ড অ্যাক্ট্রেস, মায়াজাল সিরিজ</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide testimonial-card">
-            <div class="quote-stars">
-              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-            </div>
-            <p class="quote-text">
-              “তাদের ৪কে সিনেমাটোগ্রাফি টিম এবং কালার গ্রেডিং ল্যাব আমাদের মিউজিক ফিল্মকে ইউটিউবে ১ কোটি ভিউয়ের মাইলফলকে পৌঁছে দিয়েছে।”
-            </p>
-            <div class="quote-author">
-              <div class="author-avatar">শা</div>
-              <div>
-                <h4>শায়ান রহমান</h4>
-                <span>এক্সিকিউটিভ প্রডিউসার, মেঘদূত রেকর্ডস</span>
-              </div>
-            </div>
-          </div>
+          @endforeach
         </div>
       </div>
 
@@ -804,6 +652,7 @@
       </div>
     </div>
   </section>
+  @endif
 
   <!-- ==================== PORTAL EXPLORER HUB ==================== -->
   <section class="section-pad" id="portal-hub">

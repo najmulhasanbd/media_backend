@@ -3,7 +3,7 @@
   <div class="container footer-grid">
     <div class="footer-brand">
       <a href="{{ route('home') }}" class="brand">
-        <span class="brand-logo-badge"><img src="{{ asset('frontend/assets/images/logo.jpg') }}" alt="Mind Blowing Media Logo" /></span>
+        <span class="brand-logo-badge"><img src="{{ \App\Models\Setting::get('site_logo') ? asset(\App\Models\Setting::get('site_logo')) : asset('frontend/assets/images/logo.jpg') }}" alt="Mind Blowing Media Logo" /></span>
         <span class="brand-text">
           <span class="brand-title"><span class="brand-word-blue">Mind</span> <span class="brand-word-orange">Blowing</span> <span class="brand-word-media">MEDIA</span></span>
           <span class="brand-sub">CASTING &amp; MEDIA HOUSE</span>
