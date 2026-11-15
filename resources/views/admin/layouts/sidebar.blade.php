@@ -37,7 +37,7 @@
       </li>
 
       <!-- Talents & Artists -->
-      <li class="nav-item has-dropdown {{ request()->routeIs('admin.talents.*') ? 'active open' : '' }}">
+      <li class="nav-item has-dropdown {{ request()->routeIs('admin.talents.*', 'admin.categories.*') ? 'active open' : '' }}">
         <div class="dropdown-header">
           <i class="fa-solid fa-user-astronaut"></i>
           <span>Talents & Models</span>
@@ -47,6 +47,7 @@
           <li><a href="{{ route('admin.talents.index') }}" class="{{ request()->routeIs('admin.talents.index') && !request()->filled('type') ? 'text-primary fw-bold' : '' }}">All Talents</a></li>
           <li><a href="{{ route('admin.talents.index', ['type' => 'international']) }}" class="{{ request()->input('type') === 'international' ? 'text-primary fw-bold' : '' }}">International Artists</a></li>
           <li><a href="{{ route('admin.talents.create') }}" class="{{ request()->routeIs('admin.talents.create') ? 'text-primary fw-bold' : '' }}">Add New Talent</a></li>
+          <li><a href="{{ route('admin.categories.index') }}" class="{{ request()->routeIs('admin.categories.*') ? 'text-primary fw-bold' : '' }}">Manage Categories</a></li>
         </ul>
       </li>
 

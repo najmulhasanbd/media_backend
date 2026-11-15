@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ApplicationController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CastingCallController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\HeroSliderController;
@@ -28,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
     // Talents & Artists
     Route::post('talents/reorder', [TalentController::class, 'reorder'])->name('talents.reorder');
     Route::resource('talents', TalentController::class);
+    Route::resource('categories', CategoryController::class);
 
     // Casting Calls
     Route::post('casting-calls/reorder', [CastingCallController::class, 'reorder'])->name('casting-calls.reorder');

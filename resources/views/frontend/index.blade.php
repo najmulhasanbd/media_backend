@@ -366,11 +366,9 @@
           <label for="dirCategory">ক্যাটাগরি</label>
           <select id="dirCategory">
             <option value="all">সকল ক্যাটাগরি</option>
-            <option value="অভিনেতা">অভিনেতা</option>
-            <option value="অভিনেত্রী">অভিনেত্রী</option>
-            <option value="মডেল">মডেল</option>
-            <option value="শিশু শিল্পী">শিশু শিল্পী</option>
-            <option value="ভয়েস আর্টিস্ট">ভয়েস আর্টিস্ট</option>
+            @foreach($categories as $cat)
+              <option value="{{ $cat->name }}">{{ $cat->name }}</option>
+            @endforeach
           </select>
         </div>
 
@@ -463,11 +461,9 @@
               <label for="regCategory">ক্যাটাগরি <span class="req">*</span></label>
               <select id="regCategory" name="category" required>
                 <option value="">নির্বাচন করুন</option>
-                <option value="অভিনেতা">অভিনেতা</option>
-                <option value="অভিনেত্রী">অভিনেত্রী</option>
-                <option value="মডেল">মডেল</option>
-                <option value="শিশু শিল্পী">শিশু শিল্পী</option>
-                <option value="ভয়েস আর্টিস্ট">ভয়েস আর্টিস্ট</option>
+                @foreach($categories as $cat)
+                  <option value="{{ $cat->name }}" {{ old('category') === $cat->name ? 'selected' : '' }}>{{ $cat->name }}</option>
+                @endforeach
               </select>
             </div>
 
