@@ -156,10 +156,24 @@
   <section class="stats-section" id="stats-section">
     <div class="container">
       <div class="stats-odometer-card" id="statsStrip">
+        @php
+          $pNum = preg_replace('/[^0-9]/', '', $settings['stat_projects'] ?? '500') ?: '500';
+          $pPlus = str_contains($settings['stat_projects'] ?? '+', '+') ? '+' : '';
+
+          $aNum = preg_replace('/[^0-9]/', '', $settings['stat_artists'] ?? '1200') ?: '1200';
+          $aPlus = str_contains($settings['stat_artists'] ?? '+', '+') ? '+' : '';
+
+          $fNum = preg_replace('/[^0-9]/', '', $settings['stat_films'] ?? '85') ?: '85';
+          $fPlus = str_contains($settings['stat_films'] ?? '+', '+') ? '+' : '';
+
+          $sNum = preg_replace('/[^0-9]/', '', $settings['stat_satisfaction'] ?? '99') ?: '99';
+          $sSuffix = str_contains($settings['stat_satisfaction'] ?? '%', '%') ? '%' : '+';
+        @endphp
+
         <div class="stat-item">
           <div class="stat-icon"><i class="fa-solid fa-clapperboard"></i></div>
           <div class="stat-num-row">
-            <span class="odometer stat-odo" data-target="248">0</span><span class="stat-plus">+</span>
+            <span class="odometer stat-odo" data-target="{{ $pNum }}">0</span><span class="stat-plus">{{ $pPlus }}</span>
           </div>
           <p class="stat-label">সফল মিডিয়া প্রজেক্ট</p>
         </div>
@@ -167,25 +181,25 @@
         <div class="stat-item">
           <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
           <div class="stat-num-row">
-            <span class="odometer stat-odo" data-target="1850">0</span><span class="stat-plus">+</span>
+            <span class="odometer stat-odo" data-target="{{ $aNum }}">0</span><span class="stat-plus">{{ $aPlus }}</span>
           </div>
           <p class="stat-label">নিবন্ধিত মডেল ও শিল্পী</p>
         </div>
 
         <div class="stat-item">
-          <div class="stat-icon"><i class="fa-solid fa-bullhorn"></i></div>
+          <div class="stat-icon"><i class="fa-solid fa-film"></i></div>
           <div class="stat-num-row">
-            <span class="odometer stat-odo" data-target="65">0</span><span class="stat-plus">+</span>
+            <span class="odometer stat-odo" data-target="{{ $fNum }}">0</span><span class="stat-plus">{{ $fPlus }}</span>
           </div>
-          <p class="stat-label">টপ কর্পোরেট ব্র্যান্ড</p>
+          <p class="stat-label">সিনেমা ও ওটিটি সিরিজ</p>
         </div>
 
         <div class="stat-item">
-          <div class="stat-icon"><i class="fa-solid fa-award"></i></div>
+          <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
           <div class="stat-num-row">
-            <span class="odometer stat-odo" data-target="18">0</span><span class="stat-plus">+</span>
+            <span class="odometer stat-odo" data-target="{{ $sNum }}">0</span><span class="stat-plus">{{ $sSuffix }}</span>
           </div>
-          <p class="stat-label">জাতীয় ও ফিল্ম অ্যাওয়ার্ড</p>
+          <p class="stat-label">ক্লায়েন্ট সন্তুষ্টি ও অ্যাপ্রুভাল</p>
         </div>
       </div>
     </div>
