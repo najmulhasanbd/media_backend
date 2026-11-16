@@ -294,25 +294,22 @@
                 @endif
               </div>
               <h3>{{ $call->title }}</h3>
-              @if(!empty($call->description))
-                <p class="casting-desc">{{ Str::limit($call->description, 100) }}</p>
+              @if(!empty($call->requirements))
+                <p class="casting-desc">{{ Str::limit($call->requirements, 100) }}</p>
               @endif
               <ul class="casting-specs">
-                @if(!empty($call->category))
-                  <li><i class="fa-solid fa-user-tag"></i> ক্যাটাগরি: <strong>{{ $call->category }}</strong></li>
+                @if(!empty($call->project_type))
+                  <li><i class="fa-solid fa-clapperboard"></i> প্রজেক্ট: <strong>{{ $call->project_type }}</strong></li>
                 @endif
-                @if(!empty($call->age_range))
-                  <li><i class="fa-solid fa-cake-candles"></i> বয়স: <strong>{{ $call->age_range }}</strong></li>
+                @if(!empty($call->roles))
+                  <li><i class="fa-solid fa-masks-theater"></i> চরিত্র: <strong>{{ $call->roles }}</strong></li>
                 @endif
                 @if(!empty($call->location))
-                  <li><i class="fa-solid fa-location-dot"></i> শ্যুট: <strong>{{ $call->location }}</strong></li>
-                @endif
-                @if(!empty($call->budget))
-                  <li><i class="fa-solid fa-wallet"></i> সম্মানী: <strong>{{ $call->budget }}</strong></li>
+                  <li><i class="fa-solid fa-location-dot"></i> লোকেশন: <strong>{{ $call->location }}</strong></li>
                 @endif
               </ul>
               <button class="btn-gold-pill btn-sm w-full js-apply-casting" 
-                      data-category="{{ $call->category ?? 'অভিনেতা' }}" 
+                      data-category="{{ $call->roles ?? 'অভিনেতা' }}" 
                       data-role="{{ $call->title }}" 
                       type="button">
                 <i class="fa-solid fa-paper-plane"></i>
